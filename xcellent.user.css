@@ -3,7 +3,7 @@
 @namespace		github.com/Himither
 @author			Himither
 @description		Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
-@version		1.0.4
+@version		1.0.5
 @homepageURL		https://github.com/Himither/Xcellent
 @supportURL		https://github.com/Himither/Xcellent/issues
 @updateURL		https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
@@ -11,12 +11,28 @@
 @preprocessor		stylus
 
 @var checkbox		wide			"Make it wide"					1
+
+@var text Timeline	"------------------------------------------------------" 'Timeline'
+
 @var range		timeline-width		"Set timeline width"				[42, 0, 100, 1, "%"]
 @var checkbox		timeline-header		"Stop timline header from being sticky"		0
 @var checkbox		timeline-border		"Hide timeline borders"				0
-@var checkbox		hideMenu		"Show left menu only on hover"			0
-@var checkbox		hideMessages		"Show bottom-left messages only on hover"	0
-@var checkbox		hideSidebar		"Show right sidebar only on hover"		0
+
+@var text Sidemenu	"------------------------------------------------------" 'Side menu'
+
+@var checkbox		hoverSideMenu		"Show left menu only on hover"			0
+
+@var text Sidebar	"------------------------------------------------------" 'Sidebar'
+
+@var checkbox		hoverSidebar		"Show right sidebar only on hover"		0
+@var checkbox		hideSearch		"Hide sidebar searchbar"			0
+@var checkbox		hideLike		"Hide sidebar 'You might like'"			0
+@var checkbox		hideTrends		"Hide sidebar trends"				0
+@var checkbox		hideLegalNotice		"Hide sidebar legal notice"			0
+
+@var text Other		"------------------------------------------------------" 'Other'
+
+@var checkbox		hoverMessages		"Show bottom-left messages only on hover"	0
 @var checkbox		hideFollow		"Hide 'Who to follow' in timeline"		0
 @var checkbox		hideAds			"Hide Ads"					0
 
@@ -64,6 +80,7 @@
 		[data-testid="sidebarColumn"] {
 			position: absolute !important;
 			right: 0 !important;
+			padding-right: 32px !important;
 			margin-right: 0 !important;
 			min-width: unset !important;
 			max-width: unset !important;
@@ -73,24 +90,9 @@
 			align-items: flex-end !important;
 			width: 100% !important;
 		}
-
-		[data-testid="sidebarColumn"] > div > div:last-child {
-			width: 20% !important;
-			max-width: 350px !important;
-			margin-right: 32px !important;
-		}
-
-		/* Keep the searchbar */
-		[data-testid="sidebarColumn"] > div > div > div > div > div > div:not(:first-child) {
-			display: none !important;
-		}
-
-		[data-testid="sidebarColumn"] > div > div > div > div > div > div:first-child {
-			right: 32px !important;
-			width: fit-content !important;
-		}
 	}
 
+	/* Timeline */
 	if timeline-header {
 		[data-testid="primaryColumn"] > div > div:first-child {
 			position: unset !important;
@@ -105,7 +107,8 @@
 		}
 	}
 
-	if hideMenu {
+	/* Side menu */
+	if hoverSideMenu {
 		header[role="banner"] > div > div {
 			opacity: 0 !important;
 			transition: all 300ms ease-in-out !important;
@@ -126,22 +129,8 @@
 		}
 	}
 
-	if hideMessages {
-		div#layers div[data-testid="DMDrawer"] {
-			opacity: 0 !important;
-			transform: translateX(90%) !important;
-			margin-right: 0px !important;
-			padding-right: 32px !important;
-			transition: all 300ms ease-in-out !important;
-		}
-
-		div#layers div[data-testid="DMDrawer"]:hover {
-			opacity: 1 !important;
-			transform: translateX(0) !important;
-		}
-	}
-
-	if hideSidebar {
+	/* Sidebar */
+	if hoverSidebar {
 		[data-testid="sidebarColumn"] {
 			height: 100dvh !important;
 			opacity: 1 !important;
@@ -153,17 +142,17 @@
 		}
 
 		if wide {
-			[data-testid="sidebarColumn"] > div > div > div > div > div > div:first-child {
+			[data-testid="sidebarColumn"] {
 				transition: all 300ms ease-in-out !important;
 			}
 
-			[data-testid="sidebarColumn"],
-			[data-testid="sidebarColumn"] > div > div > div > div > div > div:first-child {
+			[data-testid="sidebarColumn"] {
 				transform: translateX(calc(100% - 32px)) !important;
 			}
 
 			[data-testid="sidebarColumn"] {
 				position: fixed !important;
+				width: 382px !important;
 			}
 
 			[data-testid="sidebarColumn"]:hover {
@@ -173,6 +162,51 @@
 			[data-testid="sidebarColumn"]:hover > div > div > div > div > div > div:first-child {
 				transform: translateX(0) !important;
 			}
+		}
+	}
+
+	if hideSearch {
+		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-child(1) {
+			display: none !important;
+		}
+	}
+
+	if hideLike {
+		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-child(3) {
+			display: none !important;
+		}
+	}
+
+	if hideTrends {
+		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-child(4) {
+			display: none !important;
+		}
+
+		/*		[data-testid="sidebarColumn"] > div > div > div > div > div > div:first-child {
+			right: 32px !important;
+			width: fit-content !important;
+		} */
+	}
+
+	if hideLegalNotice {
+		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-child(5) {
+			display: none !important;
+		}
+	}
+
+	/* Others */
+	if hoverMessages {
+		div#layers div[data-testid="DMDrawer"] {
+			opacity: 0 !important;
+			transform: translateX(90%) !important;
+			margin-right: 0px !important;
+			padding-right: 32px !important;
+			transition: all 300ms ease-in-out !important;
+		}
+
+		div#layers div[data-testid="DMDrawer"]:hover {
+			opacity: 1 !important;
+			transform: translateX(0) !important;
 		}
 	}
 
