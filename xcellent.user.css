@@ -4,7 +4,7 @@
 @namespace		github.com/Himither
 @homepageURL		https://github.com/Himither/Xcellent
 @supportURL		https://github.com/Himither/Xcellent/issues
-@version		1.0.7
+@version		1.0.8
 @updateURL		https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description		Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author			Himither
@@ -15,7 +15,6 @@
 
 @var text Timeline	"------------------------------------------------------" 'Timeline'
 
-@var range		timeline-width		"Set timeline width"				[42, 0, 100, 1, "%"]
 @var checkbox		timeline-header		"Stop timline header from being sticky"		0
 @var checkbox		timeline-borders	"Hide timeline borders"				0
 
@@ -64,11 +63,62 @@
 
 		[data-testid="primaryColumn"] {
 			position: absolute !important;
-			left: 50%;
-			transform: translateX(-50%);
-			width: timeline-width !important;
-			min-width: 600px !important;
+			left: 275px !important;
+			width: auto !important;
 			max-width: unset !important;
+			right: calc(382px + 32px) !important;
+			transform: translateX(0) !image-orientation;
+		}
+
+		@media screen and (min-width: 1889px) {
+			[data-testid="primaryColumn"] {
+				left: calc(50% - 70px) !important;
+				transform: translateX(-50%) !important;
+				min-width: 1200px !important;
+			}
+		}
+
+		@media screen and (max-width: 1264px) {
+			[data-testid="primaryColumn"] {
+				left: 88px !important;
+			}
+		}
+
+		@media screen and (max-width: 1077px) {
+			[data-testid="primaryColumn"] {
+				right: 354px !important;
+			}
+		}
+
+		@media screen and (max-width: 1007px) {
+			[data-testid="primaryColumn"] {
+				left: 68px !important;
+			}
+		}
+
+		@media screen and (max-width: 987px) {
+			[data-testid="primaryColumn"] {
+				left: 88px !important;
+			}
+		}
+
+		@media screen and (max-width: 988px) {
+			[data-testid="primaryColumn"] {
+				right: 32px !important;
+				right: 0 !important;
+			}
+		}
+
+		@media screen and (max-width: 599px) {
+			[data-testid="primaryColumn"] {
+				left: 68px !important;
+			}
+		}
+
+		@media screen and (max-width: 499px) {
+			[data-testid="primaryColumn"] {
+				left: 0 !important;
+			}
 		}
 
 		[data-testid="primaryColumn"] > div > div:last-child,
@@ -84,6 +134,7 @@
 			right: 0 !important;
 			padding-right: 32px !important;
 			margin-right: 0 !important;
+			width: 382px !important;
 			min-width: unset !important;
 			max-width: unset !important;
 		}
@@ -162,7 +213,6 @@
 
 			[data-testid="sidebarColumn"] {
 				position: fixed !important;
-				width: 382px !important;
 			}
 
 			[data-testid="sidebarColumn"]:hover {
