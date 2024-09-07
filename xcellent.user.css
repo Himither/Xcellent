@@ -16,7 +16,7 @@
 
 @var range		timeline-width		"Set timeline width"				[42, 0, 100, 1, "%"]
 @var checkbox		timeline-header		"Stop timline header from being sticky"		0
-@var checkbox		timeline-borders		"Hide timeline borders"				0
+@var checkbox		timeline-borders	"Hide timeline borders"				0
 
 @var text Sidemenu	"------------------------------------------------------" 'Side menu'
 
