@@ -16,7 +16,7 @@
 
 @var range		timeline-width		"Set timeline width"				[42, 0, 100, 1, "%"]
 @var checkbox		timeline-header		"Stop timline header from being sticky"		0
-@var checkbox		timeline-border		"Hide timeline borders"				0
+@var checkbox		timeline-borders		"Hide timeline borders"				0
 
 @var text Sidemenu	"------------------------------------------------------" 'Side menu'
 
@@ -33,6 +33,7 @@
 @var text Other		"------------------------------------------------------" 'Other'
 
 @var checkbox		hoverMessages		"Show bottom-left messages only on hover"	0
+@var checkbox		hateBorders		"Make all borders transparent"			0
 @var checkbox		hideFollow		"Hide 'Who to follow' in timeline"		0
 @var checkbox		hideAds			"Hide Ads"					0
 
@@ -99,11 +100,19 @@
 		}
 	}
 
-	if timeline-border {
+	if timeline-borders {
 
-		div[data-testid="primaryColumn"],
-		div[data-testid="primaryColumn"] section[role="region"] > div > div > div > div {
+		[data-testid="primaryColumn"],
+		[data-testid="primaryColumn"] nav,
+		[data-testid="primaryColumn"] div:has([data-testid="tweetPhoto"]),
+		[data-testid="primaryColumn"] section[role="region"] > div > div > div > div {
 			border-color: transparent !important
+		}
+	}
+
+	if timeline-borders or hateBorders {
+		[data-testid="primaryColumn"]:has(article) > div > div:nth-child(4) {
+			background-color: transparent !important;
 		}
 	}
 
@@ -207,6 +216,12 @@
 		div#layers div[data-testid="DMDrawer"]:hover {
 			opacity: 1 !important;
 			transform: translateX(0) !important;
+		}
+	}
+
+	if hateBorders {
+		* {
+			border-color: transparent !important;
 		}
 	}
 
