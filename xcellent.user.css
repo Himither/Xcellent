@@ -1,0 +1,162 @@
+/* ==UserStyle==
+@name			Xcellent
+@namespace		github.com/Himither
+@author			Himither
+@description		Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
+@version		1.0.0
+@homepageURL		https://github.com/Himither/Xcellent
+@supportURL		https://github.com/Himither/Xcellent/issues
+@updateURL		https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
+@license		MIT
+@preprocessor		stylus
+
+@var checkbox		wide			"Make it wide"					1
+@var range		timeline-width		"Set timeline width"				[42, 0, 100, 1, "%"]
+@var checkbox		timeline-header		"Stop timline header from being sticky"		0
+@var checkbox		timeline-border		"Hide timeline borders"				0
+@var checkbox		hideMenu		"Show left menu only on hover"			0
+@var checkbox		hideMessages		"Show bottom-left messages only on hover"	0
+@var checkbox		hideSidebar		"Show right sidebar only on hover"		0
+@var checkbox		hideAds			"Hide Ads"					0
+
+==/UserStyle== */
+@-moz-document url-prefix("https://x.com") {
+
+	/* Remove hideAds */
+	if hideAds {
+		main section > div > div > div:has(article > div > div > div > div > div > div > div > div > div > span) {
+			display: none !important;
+		}
+	}
+
+	div[aria-label$="posts"] > div > div:not(:has(:is(article, a[href^="/i/status"], [role="progressbar"], button > div > svg))) {
+		display: none !important;
+	}
+
+	/* Wide as FAQ! boi */
+	if wide {
+		header[role="banner"] {
+			position: absolute !important;
+			left: 0 !important;
+		}
+
+		header[role="banner"] > div {
+			position: absolute !important;
+			left: 0 !important;
+			margin-left: 0 !important;
+		}
+
+		header[role="banner"] > div > div {
+			left: 0 !important;
+		}
+
+		main[role="main"] > div {
+			width: 100dvw !important;
+		}
+
+		main div[data-testid="primaryColumn"] {
+			position: absolute !important;
+			left: 50%;
+			transform: translateX(-50%);
+			width: timeline-width !important;
+			min-width: 600px !important;
+			max-width: unset !important;
+		}
+
+		main div[data-testid="primaryColumn"] > div > div:last-child,
+		main div[data-testid="primaryColumn"] > div > div:last-child > div > div {
+			min-width: unset !important;
+			max-width: unset !important;
+			width: 100% !important;
+			margin: 0 !important;
+		}
+
+		main div[data-testid="sidebarColumn"] {
+			position: absolute !important;
+			right: 0 !important;
+			margin-right: 0 !important;
+			min-width: unset !important;
+			max-width: unset !important;
+		}
+
+		main div[data-testid="sidebarColumn"] > div {
+			align-items: flex-end !important;
+			width: 100% !important;
+		}
+
+		main div[data-testid="sidebarColumn"] > div > div:last-child {
+			width: 20% !important;
+			max-width: 350px !important;
+			margin-right: 32px !important;
+		}
+
+		/* Keep the searchbar */
+		main div[data-testid="sidebarColumn"] > div > div > div > div > div > div:not(:first-child) {
+			display: none !important;
+		}
+
+		main div[data-testid="sidebarColumn"] > div > div > div > div > div > div:first-child {
+			right: 32px !important;
+			width: fit-content !important;
+		}
+	}
+
+	if timeline-border {
+		div[data-testid="primaryColumn"],
+		div[data-testid="primaryColumn"] section[role="region"] > div > div > div > div {
+			border-color: transparent !important
+		}
+	}
+	
+	if timeline-header {
+		[data-testid="primaryColumn"] > div > div:first-child {
+			position: unset !important;
+		}
+		
+	}
+
+	if hideMenu {
+		header[role="banner"] > div > div {
+			opacity: 0 !important;
+			transition: all 300ms ease-in-out !important;
+		}
+
+		header[role="banner"] > div > div:hover {
+			opacity: 1 !important;
+		}
+
+		if wide {
+			header[role="banner"] > div > div{
+				left: calc(-275px + 32px)!important;
+			}
+
+			header[role="banner"] > div > div:hover {
+				left: 0 !important;
+			}	
+		}
+	}
+
+	if hideMessages {
+		div#layers div[data-testid="DMDrawer"] {
+			opacity: 0 !important;
+			transform: translateX(90%) !important;
+			margin-right: 0px !important;
+			padding-right: 32px !important;
+		}
+
+		div#layers div[data-testid="DMDrawer"]:hover {
+			opacity: 1 !important;
+			transform: translateX(0) !important;
+		}
+	}
+
+	if hideSidebar { div[data-testid="sidebarColumn"] {
+			opacity: 0 !important;
+			transition: opacity 300ms ease-in-out !important;
+		}
+
+		div[data-testid="sidebarColumn"]:hover {
+			opacity: 1 !important;
+		}
+	}
+}
