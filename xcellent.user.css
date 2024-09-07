@@ -22,7 +22,6 @@
 ==/UserStyle== */
 @-moz-document url-prefix("https://x.com") {
 
-	/* Remove hideAds */
 	if hideAds {
 		main section > div > div > div:has(article > div > div > div > div > div > div > div > div > div > span) {
 			display: none !important;
@@ -107,12 +106,11 @@
 			border-color: transparent !important
 		}
 	}
-	
+
 	if timeline-header {
 		[data-testid="primaryColumn"] > div > div:first-child {
 			position: unset !important;
 		}
-		
 	}
 
 	if hideMenu {
@@ -126,13 +124,13 @@
 		}
 
 		if wide {
-			header[role="banner"] > div > div{
+			header[role="banner"] > div > div {
 				left: calc(-275px + 32px)!important;
 			}
 
 			header[role="banner"] > div > div:hover {
 				left: 0 !important;
-			}	
+			}
 		}
 	}
 
