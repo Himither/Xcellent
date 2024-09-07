@@ -3,7 +3,7 @@
 @namespace		github.com/Himither
 @author			Himither
 @description		Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
-@version		1.0.5
+@version		1.0.6
 @homepageURL		https://github.com/Himither/Xcellent
 @supportURL		https://github.com/Himither/Xcellent/issues
 @updateURL		https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
@@ -133,7 +133,7 @@
 	if hoverSidebar {
 		[data-testid="sidebarColumn"] {
 			height: 100dvh !important;
-			opacity: 1 !important;
+			opacity: 0 !important;
 			transition: all 300ms ease-in-out !important;
 		}
 
