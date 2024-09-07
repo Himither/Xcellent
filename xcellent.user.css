@@ -3,7 +3,7 @@
 @namespace		github.com/Himither
 @author			Himither
 @description		Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
-@version		1.0.0
+@version		1.0.1
 @homepageURL		https://github.com/Himither/Xcellent
 @supportURL		https://github.com/Himither/Xcellent/issues
 @updateURL		https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
@@ -21,7 +21,6 @@
 
 ==/UserStyle== */
 @-moz-document url-prefix("https://x.com") {
-
 	if hideAds {
 		main section > div > div > div:has(article > div > div > div > div > div > div > div > div > div > span) {
 			display: none !important;
@@ -125,7 +124,7 @@
 
 		if wide {
 			header[role="banner"] > div > div {
-				left: calc(-275px + 32px)!important;
+				left: calc(-275px + 32px) !important;
 			}
 
 			header[role="banner"] > div > div:hover {
@@ -148,13 +147,25 @@
 		}
 	}
 
-	if hideSidebar { div[data-testid="sidebarColumn"] {
+	if hideSidebar {
+		div[data-testid="sidebarColumn"] {
 			opacity: 0 !important;
-			transition: opacity 300ms ease-in-out !important;
+			transition: all 300ms ease-in-out !important;
 		}
 
 		div[data-testid="sidebarColumn"]:hover {
 			opacity: 1 !important;
+		}
+
+		if wide {
+			div[data-testid="sidebarColumn"] {
+				height: 100dvh !important;
+				transform: translateX(calc(350px - 32px))
+			}
+
+			div[data-testid="sidebarColumn"]:hover {
+				transform: translateX(0);
+			}
 		}
 	}
 }
