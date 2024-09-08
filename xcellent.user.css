@@ -4,7 +4,7 @@
 @namespace		github.com/Himither
 @homepageURL		https://github.com/Himither/Xcellent
 @supportURL		https://github.com/Himither/Xcellent/issues
-@version		1.0.9
+@version		1.0.10
 @updateURL		https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description		Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author			Himither
@@ -140,12 +140,6 @@
 			[data-testid="sidebarColumn"]:hover {
 				width: 414px !important;
 				background-color: var(--bg) !important;
-			}
-		}
-
-		if hoverSideMenu and !hoverSidebar {
-			[data-testid="primaryColumn"] {
-				background-color: pink !important;
 			}
 		}
 
