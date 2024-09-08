@@ -4,7 +4,7 @@
 @namespace		github.com/Himither
 @homepageURL		https://github.com/Himither/Xcellent
 @supportURL		https://github.com/Himither/Xcellent/issues
-@version		1.0.8
+@version		1.0.9
 @updateURL		https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description		Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author			Himither
@@ -15,8 +15,11 @@
 
 @var text Timeline	"------------------------------------------------------" 'Timeline'
 
+@var range		timeline-width		"Adjust timline max-width"			[900, 600, 1800, 1, "px"]
 @var checkbox		timeline-header		"Stop timline header from being sticky"		0
-@var checkbox		timeline-borders	"Hide timeline borders"				0
+@var checkbox		timeline-outerBorders	"Hide borders around timeline"			0
+@var checkbox		timeline-postBorders	"Hide borders between posts"			0
+@var checkbox		timeline-imgBorders	"Hide borders around images"			0
 
 @var text Sidemenu	"------------------------------------------------------" 'Side menu'
 
@@ -39,6 +42,18 @@
 
 ==/UserStyle== */
 @-moz-document url-prefix("https://x.com") {
+
+	:root:has(body[style*="rgb(0"]) {
+		--bg: rgb(0, 0, 0);
+	}
+
+	:root:has(body[style*="rgb(21"]) {
+		--bg: rgb(21, 32, 43);
+	}
+
+	:root:has(body[style*="rgb(255"]) {
+		--bg: rgb(255, 255, 255);
+	}
 
 	/* Formerly known as Twitter ¯\_(ツ)_/¯ */
 	if wide {
@@ -65,61 +80,12 @@
 			position: absolute !important;
 			left: 275px !important;
 			width: auto !important;
-			max-width: unset !important;
+			margin: auto !important;
+			max-width: timeline-width !important;
 			right: calc(382px + 32px) !important;
 			transform: translateX(0) !image-orientation;
 		}
 
-		@media screen and (min-width: 1889px) {
-			[data-testid="primaryColumn"] {
-				left: calc(50% - 70px) !important;
-				transform: translateX(-50%) !important;
-				min-width: 1200px !important;
-			}
-		}
-
-		@media screen and (max-width: 1264px) {
-			[data-testid="primaryColumn"] {
-				left: 88px !important;
-			}
-		}
-
-		@media screen and (max-width: 1077px) {
-			[data-testid="primaryColumn"] {
-				right: 354px !important;
-			}
-		}
-
-		@media screen and (max-width: 1007px) {
-			[data-testid="primaryColumn"] {
-				left: 68px !important;
-			}
-		}
-
-		@media screen and (max-width: 987px) {
-			[data-testid="primaryColumn"] {
-				left: 88px !important;
-			}
-		}
-
-		@media screen and (max-width: 988px) {
-			[data-testid="primaryColumn"] {
-				right: 32px !important;
-				right: 0 !important;
-			}
-		}
-
-		@media screen and (max-width: 599px) {
-			[data-testid="primaryColumn"] {
-				left: 68px !important;
-			}
-		}
-
-		@media screen and (max-width: 499px) {
-			[data-testid="primaryColumn"] {
-				left: 0 !important;
-			}
-		}
 
 		[data-testid="primaryColumn"] > div > div:last-child,
 		[data-testid="primaryColumn"] > div > div:last-child > div > div {
@@ -143,6 +109,69 @@
 			align-items: flex-end !important;
 			width: 100% !important;
 		}
+
+		[data-testid="sidebarColumn"] > div > div {
+			width: 350px !important;
+		}
+
+
+		if hoverSideMenu or hoverSidebar {
+			[data-testid="primaryColumn"] {
+				transition: all 300ms ease-in-out !important;
+			}
+		}
+
+		if hoverSideMenu {
+			[data-testid="primaryColumn"] {
+				left: 0 !important;
+			}
+
+			header[role="banner"] > div > div {
+				background-color: var(--bg) !important;
+			}
+		}
+
+		if hoverSidebar {
+			[data-testid="primaryColumn"] {
+				z-index: 0 !important;
+				right: 32px !important;
+			}
+
+			[data-testid="sidebarColumn"]:hover {
+				width: 414px !important;
+				background-color: var(--bg) !important;
+			}
+		}
+
+		if hoverSideMenu and !hoverSidebar {
+			[data-testid="primaryColumn"] {
+				background-color: pink !important;
+			}
+		}
+
+		@media screen and (max-width: 1264px) {
+
+			header[role="banner"] > div > div > div {
+				width: 68px !important;
+			}
+
+			[data-testid="primaryColumn"] {
+				left: 68px !important;
+			}
+		}
+
+		@media screen and (max-width: 987px) {
+			[data-testid="primaryColumn"] {
+				right: 0 !important;
+			}
+		}
+
+
+		@media screen and (max-width: 499px) {
+			[data-testid="primaryColumn"] {
+				left: 0 !important;
+			}
+		}
 	}
 
 	/* Timeline */
@@ -152,18 +181,31 @@
 		}
 	}
 
-	if timeline-borders {
+	if timeline-outerBorders {
 
-		[data-testid="primaryColumn"],
+		[data-testid="primaryColumn"] {
+			border-color: transparent !important
+		}
+	}
+
+	if timeline-postBorders {
+
 		[data-testid="primaryColumn"] nav,
-		[data-testid="primaryColumn"] div:has([data-testid="tweetPhoto"]),
 		[data-testid="primaryColumn"] section[role="region"] > div > div > div > div {
 			border-color: transparent !important
 		}
 	}
 
-	if timeline-borders or hateBorders {
-		[data-testid="primaryColumn"]:has(article) > div > div:nth-child(4) {
+	/* For this one I'll have to trust the sussy class. Can't figure out a smart selector... */
+	if timeline-imgBorders {
+		[data-testid="primaryColumn"] .r-1kqtdi0 {
+			border-color: transparent !important
+		}
+	}
+
+	if timeline-postBorders or hateBorders {
+		[data-testid="primaryColumn"]:has(article) > div > div:nth-child(4),
+		[data-testid="primaryColumn"] section[role="region"] > div > div > div > div > div {
 			background-color: transparent !important;
 		}
 	}
@@ -185,7 +227,17 @@
 			}
 
 			header[role="banner"] > div > div:hover {
-				left: 0 !important;
+				left: 0px !important;
+			}
+
+			@media screen and (max-width: 1264px) {
+				header[role="banner"] > div > div {
+					left: calc(-88px + 32px) !important;
+				}
+
+				header[role="banner"] > div > div:hover {
+					left: 0 !important;
+				}
 			}
 		}
 	}
@@ -232,13 +284,13 @@
 	}
 
 	if hideLike {
-		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-child(3) {
+		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-last-child(3) {
 			display: none !important;
 		}
 	}
 
 	if hideTrends {
-		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-child(4) {
+		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-last-child(2) {
 			display: none !important;
 		}
 
@@ -249,7 +301,7 @@
 	}
 
 	if hideLegalNotice {
-		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-child(5) {
+		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-last-child(1) {
 			display: none !important;
 		}
 	}
