@@ -4,7 +4,7 @@
 @namespace		github.com/Himither
 @homepageURL		https://github.com/Himither/Xcellent
 @supportURL		https://github.com/Himither/Xcellent/issues
-@version		1.0.10
+@version		1.0.11
 @updateURL		https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description		Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author			Himither
@@ -13,29 +13,29 @@
 
 @var checkbox		wide			"Make it wide"					1
 
-@var text Timeline	"------------------------------------------------------" 'Timeline'
+@var text Timeline	"🢂【Timeline】" '_'
 
-@var range		timeline-width		"Adjust timline max-width"			[900, 600, 1800, 1, "px"]
-@var checkbox		timeline-header		"Stop timline header from being sticky"		0
+@var range		timeline-width		"Timline max-width"			[900, 600, 1800, 1, "px"]
+@var checkbox		timeline-header		"Non-sticky timline"				0
 @var checkbox		timeline-outerBorders	"Hide borders around timeline"			0
 @var checkbox		timeline-postBorders	"Hide borders between posts"			0
 @var checkbox		timeline-imgBorders	"Hide borders around images"			0
 
-@var text Sidemenu	"------------------------------------------------------" 'Side menu'
+@var text Sidemenu	"🢂【Sidemenu】" '_'
 
-@var checkbox		hoverSideMenu		"Show left menu only on hover"			0
+@var checkbox		hoverSideMenu		"Show menu only on hover"			0
 
-@var text Sidebar	"------------------------------------------------------" 'Sidebar'
+@var text Sidebar	"🢂【Sidebar】" '_'
 
-@var checkbox		hoverSidebar		"Show right sidebar only on hover"		0
+@var checkbox		hoverSidebar		"Show sidebar only on hover"		0
 @var checkbox		hideSearch		"Hide sidebar searchbar"			0
 @var checkbox		hideLike		"Hide sidebar 'You might like'"			0
 @var checkbox		hideTrends		"Hide sidebar trends"				0
 @var checkbox		hideLegalNotice		"Hide sidebar legal notice"			0
 
-@var text Other		"------------------------------------------------------" 'Other'
+@var text Other		"🢂【Other】" '_'
 
-@var checkbox		hoverMessages		"Show bottom-left messages only on hover"	0
+@var checkbox		hoverMessages		"Show Messages only on hover"	0
 @var checkbox		hateBorders		"Make all borders transparent"			0
 @var checkbox		hideFollow		"Hide 'Who to follow' in timeline"		0
 @var checkbox		hideAds			"Hide Ads"					0
