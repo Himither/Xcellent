@@ -4,7 +4,7 @@
 @namespace			github.com/Himither
 @homepageURL			https://github.com/Himither/Xcellent
 @supportURL			https://github.com/Himither/Xcellent/issues
-@version			1.0.11
+@version			1.0.12
 @updateURL			https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description			Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author				Himither
@@ -13,32 +13,38 @@
 
 @var checkbox			wide				"Make it wide"					1
 
-@var text Timeline		"🢂【Timeline】" '_'
+@var text Timeline		"━━━━━━⮞【Timeline】" '_'
 
 @var range			timeline-width			"Timline max-width"				[900, 600, 1800, 1, "px"]
-@var checkbox			timeline-header			"Non-sticky timline"				0
+@var checkbox			timeline-header			"Non-sticky timline header"			0
+@var checkbox			timeline-hideFollow		"Hide 'Who to follow'"				0
+@var checkbox			timeline-hideAds		"Hide Ads"					0
 @var checkbox			timeline-outerBorders		"Hide borders around timeline"			0
 @var checkbox			timeline-postBorders		"Hide borders between posts"			0
 @var checkbox			timeline-imgBorders		"Hide borders around images"			0
+@var checkbox			timeline-quoteBorders		"Hide borders around quotes"			0
+@var checkbox			timeline-quoteImg		"Round top corners for quote images"		0
 
-@var text Sidemenu		"🢂【Sidemenu】" '_'
+@var text Sidemenu		"━━━━━━⮞【Sidemenu】" '_'
 
-@var checkbox			hoverSideMenu			"Show menu only on hover"			0
+@var checkbox			sidemenu-hover			"Show menu only on hover"			0
+@var checkbox			sidemenu-hidePremium		"Hide 'Premium' button"				0
+@var checkbox			sidemenu-hideJobs		"Hide 'Jobs' button"				0
+@var checkbox			sidemenu-hideVerifiedOrgs	"Hide 'Verified Orgs' button"			0
+@var checkbox			sidemenu-hidePost		"Hide 'Post' button"				0
 
-@var text Sidebar		"🢂【Sidebar】" '_'
+@var text Sidebar		"━━━━━━⮞【Sidebar】" '_'
 
-@var checkbox			hoverSidebar			"Show sidebar only on hover"			0
-@var checkbox			hideSearch			"Hide sidebar searchbar"			0
-@var checkbox			hideLike			"Hide sidebar 'You might like'"			0
-@var checkbox			hideTrends			"Hide sidebar trends"				0
-@var checkbox			hideLegalNotice			"Hide sidebar legal notice"			0
+@var checkbox			sidebar-hover			"Show sidebar only on hover"			0
+@var checkbox			sidebar-hideSearch		"Hide sidebar searchbar"			0
+@var checkbox			sidebar-hideLike		"Hide sidebar 'You might like'"			0
+@var checkbox			sidebar-hideTrends		"Hide sidebar trends"				0
+@var checkbox			sidebar-hideLegalNotice		"Hide sidebar legal notice"			0
 
-@var text Other			"🢂【Other】" '_'
+@var text Other			"━━━━━━⮞【Other】" '_'
 
-@var checkbox			hoverMessages			"Show Messages only on hover"			0
-@var checkbox			hateBorders			"Make all borders transparent"			0
-@var checkbox			hideFollow			"Hide 'Who to follow' in timeline"		0
-@var checkbox			hideAds				"Hide Ads"					0
+@var checkbox			other-hoverMessages		"Show Messages only on hover"			0
+@var checkbox			other-hateBorders		"Make all borders transparent"			0
 
 ==/UserStyle== */
 @-moz-document url-prefix("https://x.com") {
@@ -115,13 +121,13 @@
 		}
 
 
-		if hoverSideMenu or hoverSidebar {
+		if sidemenu-hover or sidebar-hover {
 			[data-testid="primaryColumn"] {
 				transition: all 300ms ease-in-out !important;
 			}
 		}
 
-		if hoverSideMenu {
+		if sidemenu-hover {
 			[data-testid="primaryColumn"] {
 				left: 0 !important;
 			}
@@ -131,7 +137,7 @@
 			}
 		}
 
-		if hoverSidebar {
+		if sidebar-hover {
 			[data-testid="primaryColumn"] {
 				z-index: 0 !important;
 				right: 32px !important;
@@ -168,7 +174,7 @@
 		}
 	}
 
-	/* Timeline */
+	/* ━━━━━━⮞ Timeline */
 	if timeline-header {
 		[data-testid="primaryColumn"] > div > div:first-child {
 			position: unset !important;
@@ -182,6 +188,19 @@
 		}
 	}
 
+
+	if timeline-hideFollow {
+		div[aria-label$="posts"] > div > div:not(:has(:is(article, a[href^="/i/status"], [role="progressbar"], button > div > svg))) {
+			display: none !important;
+		}
+	}
+
+	if timeline-hideAds {
+		main section > div > div > div:has(article > div > div > div > div > div > div > div > div > div > span) {
+			display: none !important;
+		}
+	}
+
 	if timeline-postBorders {
 
 		[data-testid="primaryColumn"] nav,
@@ -190,22 +209,34 @@
 		}
 	}
 
-	/* For this one I'll have to trust the sussy class. Can't figure out a smart selector... */
-	if timeline-imgBorders {
-		[data-testid="primaryColumn"] .r-1kqtdi0 {
-			border-color: transparent !important
-		}
-	}
-
-	if timeline-postBorders or hateBorders {
+	if timeline-postBorders or other-hateBorders {
 		[data-testid="primaryColumn"]:has(article) > div > div:nth-child(4),
 		[data-testid="primaryColumn"] section[role="region"] > div > div > div > div > div {
 			background-color: transparent !important;
 		}
 	}
 
-	/* Side menu */
-	if hoverSideMenu {
+
+	if timeline-imgBorders {
+		[data-testid="primaryColumn"] div[id^="id__"] > div > div > div > div {
+			border-color: transparent !important
+		}
+	}
+
+	if timeline-quoteBorders {
+		[data-testid="primaryColumn"] div[id^="id__"] > div:last-child[role="link"] {
+			border-color: transparent !important
+		}
+	}
+
+	if timeline-quoteImg {
+		div[data-testid="tweetPhoto"] {
+			border-radius: 16px;
+		}
+	}
+
+	/* ━━━━━━⮞ Side menu */
+	if sidemenu-hover {
 		header[role="banner"] > div > div {
 			opacity: 0 !important;
 			transition: all 300ms ease-in-out !important;
@@ -236,8 +267,32 @@
 		}
 	}
 
-	/* Sidebar */
-	if hoverSidebar {
+	if sidemenu-hidePremium {
+		header a[data-testid="premium-hub-tab"] {
+			display: none;
+		}
+	}
+
+	if sidemenu-hideJobs {
+		header a[data-testid="jobs-tab-item"] {
+			display: none;
+		}
+	}
+
+	if sidemenu-hideVerifiedOrgs {
+		header a[data-testid="vo-signup-tab"] {
+			display: none;
+		}
+	}
+
+	if sidemenu-hidePost {
+		header div:has(> a[data-testid="SideNav_NewTweet_Button"]) {
+			display: none;
+		}
+	}
+
+	/* ━━━━━━⮞ Sidebar */
+	if sidebar-hover {
 		[data-testid="sidebarColumn"] {
 			height: 100dvh !important;
 			opacity: 0 !important;
@@ -271,37 +326,32 @@
 		}
 	}
 
-	if hideSearch {
+	if sidebar-hideSearch {
 		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-child(1) {
 			display: none !important;
 		}
 	}
 
-	if hideLike {
+	if sidebar-hideLike {
 		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-last-child(3) {
 			display: none !important;
 		}
 	}
 
-	if hideTrends {
+	if sidebar-hideTrends {
 		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-last-child(2) {
 			display: none !important;
 		}
-
-		/*		[data-testid="sidebarColumn"] > div > div > div > div > div > div:first-child {
-			right: 32px !important;
-			width: fit-content !important;
-		} */
 	}
 
-	if hideLegalNotice {
+	if sidebar-hideLegalNotice {
 		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-last-child(1) {
 			display: none !important;
 		}
 	}
 
-	/* Others */
-	if hoverMessages {
+	/* ━━━━━━⮞ Others */
+	if other-hoverMessages {
 		div#layers div[data-testid="DMDrawer"] {
 			opacity: 0 !important;
 			transform: translateX(90%) !important;
@@ -316,21 +366,9 @@
 		}
 	}
 
-	if hateBorders {
+	if other-hateBorders {
 		* {
 			border-color: transparent !important;
-		}
-	}
-
-	if hideFollow {
-		div[aria-label$="posts"] > div > div:not(:has(:is(article, a[href^="/i/status"], [role="progressbar"], button > div > svg))) {
-			display: none !important;
-		}
-	}
-
-	if hideAds {
-		main section > div > div > div:has(article > div > div > div > div > div > div > div > div > div > span) {
-			display: none !important;
 		}
 	}
 }
