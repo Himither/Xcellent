@@ -4,7 +4,7 @@
 @namespace			github.com/Himither
 @homepageURL			https://github.com/Himither/Xcellent
 @supportURL			https://github.com/Himither/Xcellent/issues
-@version			1.0.12
+@version			1.0.13
 @updateURL			https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description			Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author				Himither
@@ -63,6 +63,11 @@
 
 	/* Formerly known as Twitter ¯\_(ツ)_/¯ */
 	if wide {
+		
+		html {
+			overflow-x: hidden;
+		}
+		
 		header[role="banner"] {
 			position: absolute !important;
 			left: 0 !important;
