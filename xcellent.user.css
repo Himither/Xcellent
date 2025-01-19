@@ -1,51 +1,51 @@
 /* ==UserStyle==
 
-@name				Xcellent
-@namespace			github.com/Himither
-@homepageURL			https://github.com/Himither/Xcellent
-@supportURL			https://github.com/Himither/Xcellent/issues
-@version			1.0.17
-@updateURL			https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
-@description			Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
-@author				Himither
-@license			MIT
-@preprocessor			stylus
+@name								Xcellent
+@namespace					github.com/Himither
+@homepageURL				https://github.com/Himither/Xcellent
+@supportURL					https://github.com/Himither/Xcellent/issues
+@version						1.0.17
+@updateURL					https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
+@description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
+@author							Himither
+@license						MIT
+@preprocessor				stylus
 
-@var checkbox			wide				"Make it wide"					1
-@var checkbox			timeline-grok			"Hide grok stuff" 				0
+@var checkbox				wide											"Make it wide"													1
+@var checkbox				timeline-grok							"Hide grok stuff" 											0
 
-@var text Timeline		"━━━━━━⮞【Timeline】" '_'
+@var text Timeline	"━━━━━━⮞【Timeline】" '_'
 
-@var range			timeline-width			"Timline max-width"				[900, 600, 1800, 1, "px"]
-@var checkbox			timeline-header			"Non-sticky timline header"			0
-@var checkbox			timeline-hideFollow		"Hide 'Who to follow'"				0
-@var checkbox			timeline-hideAds		"Hide Ads"					0
-@var checkbox			timeline-outerBorders		"Hide borders around timeline"			0
-@var checkbox			timeline-postBorders		"Hide borders between posts"			0
-@var checkbox			timeline-imgBorders		"Hide borders around images"			0
-@var checkbox			timeline-quoteBorders		"Hide borders around quotes"			0
-@var checkbox			timeline-quoteImg		"Round top corners for quote images"		0
+@var range					timeline-width						"Timline max-width"											[900, 600, 1800, 1, "px"]
+@var checkbox				timeline-header						"Non-sticky timline header"							0
+@var checkbox				timeline-hideFollow				"Hide 'Who to follow'"									0
+@var checkbox				timeline-hideAds					"Hide Ads"															0
+@var checkbox				timeline-outerBorders			"Hide borders around timeline"					0
+@var checkbox				timeline-postBorders			"Hide borders between posts"						0
+@var checkbox				timeline-imgBorders				"Hide borders around images"						0
+@var checkbox				timeline-quoteBorders			"Hide borders around quotes"						0
+@var checkbox				timeline-quoteImg					"Round top corners for quote images"		0
 
-@var text Sidemenu		"━━━━━━⮞【Sidemenu】" '_'
+@var text Sidemenu	"━━━━━━⮞【Sidemenu】" '_'
 
-@var checkbox			sidemenu-hover			"Show menu only on hover"			0
-@var checkbox			sidemenu-hidePremium		"Hide 'Premium' button"				0
-@var checkbox			sidemenu-hideJobs		"Hide 'Jobs' button"				0
-@var checkbox			sidemenu-hideVerifiedOrgs	"Hide 'Verified Orgs' button"			0
-@var checkbox			sidemenu-hidePost		"Hide 'Post' button"				0
+@var checkbox				sidemenu-hover						"Show menu only on hover"								0
+@var checkbox				sidemenu-hidePremium			"Hide 'Premium' button"									0
+@var checkbox				sidemenu-hideJobs					"Hide 'Jobs' button"										0
+@var checkbox				sidemenu-hideVerifiedOrgs	"Hide 'Verified Orgs' button"						0
+@var checkbox				sidemenu-hidePost					"Hide 'Post' button"										0
 
 @var text Sidebar		"━━━━━━⮞【Sidebar】" '_'
 
-@var checkbox			sidebar-hover			"Show sidebar only on hover"			0
-@var checkbox			sidebar-hideSearch		"Hide sidebar searchbar"			0
-@var checkbox			sidebar-hideLike		"Hide sidebar 'You might like'"			0
-@var checkbox			sidebar-hideTrends		"Hide sidebar trends"				0
-@var checkbox			sidebar-hideLegalNotice		"Hide sidebar legal notice"			0
+@var checkbox				sidebar-hover							"Show sidebar only on hover"						0
+@var checkbox				sidebar-hideSearch				"Hide sidebar searchbar"								0
+@var checkbox				sidebar-hideLike					"Hide sidebar 'You might like'"					0
+@var checkbox				sidebar-hideTrends				"Hide sidebar trends"										0
+@var checkbox				sidebar-hideLegalNotice		"Hide sidebar legal notice"							0
 
 @var text Other			"━━━━━━⮞【Other】" '_'
 
-@var checkbox			other-hoverMessages		"Show Messages only on hover"			0
-@var checkbox			other-hateBorders		"Make all borders transparent"			0
+@var checkbox				other-hoverMessages				"Show Messages only on hover"						0
+@var checkbox				other-hateBorders					"Make all borders transparent"					0
 
 ==/UserStyle== */
 @-moz-document url-prefix("https://x.com") {
