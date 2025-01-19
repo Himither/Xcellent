@@ -4,7 +4,7 @@
 @namespace			github.com/Himither
 @homepageURL			https://github.com/Himither/Xcellent
 @supportURL			https://github.com/Himither/Xcellent/issues
-@version			1.0.15
+@version			1.0.16
 @updateURL			https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description			Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author				Himither
@@ -183,7 +183,8 @@
 	if timeline-grok {
 		div[data-testid="GrokDrawer"],
 		button[aria-label*="Grok"],
-		a[aria-label*="Grok"] {
+		a[aria-label*="Grok"],
+ 		button:has(path[d*="21h4.241L6.446"]) /* locate the SVG */{
 			display: none;
 		}
 	}
