@@ -4,7 +4,7 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.0.18
+@version				1.0.19
 @updateURL				https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author					Himither
@@ -14,7 +14,7 @@
 @var checkbox				wide					"Make it wide"					1
 @var checkbox				timeline-grok				"Hide grok stuff" 				0
 
-@var text Timeline	"━━━━━━⮞【Timeline】" '_'
+@var text Timeline		"━━━━━━⮞【Timeline】" '_'
 
 @var range				timeline-width				"Timline max-width"				[900, 600, 1800, 1, "px"]
 @var checkbox				timeline-header				"Non-sticky timline header"			0
@@ -26,20 +26,20 @@
 @var checkbox				timeline-quoteBorders			"Hide borders around quotes"			0
 @var checkbox				timeline-quoteImg			"Round top corners for quote images"		0
 
-@var text Sidemenu	"━━━━━━⮞【Sidemenu】" '_'
+@var text Sidemenu		"━━━━━━⮞【Sidemenu】" '_'
 
 @var checkbox				sidemenu-hover				"Show menu only on hover"			0
 @var checkbox				sidemenu-hidePremium			"Hide 'Premium' button"				0
 @var checkbox				sidemenu-hideJobs			"Hide 'Jobs' button"				0
 @var checkbox				sidemenu-hideVerifiedOrgs		"Hide 'Verified Orgs' button"			0
-@var checkbox				sidemenu-hidePost					"Hide 'Post' button"		0
+@var checkbox				sidemenu-hidePost			"Hide 'Post' button"				0
 
 @var text Sidebar		"━━━━━━⮞【Sidebar】" '_'
 
 @var checkbox				sidebar-hover				"Show sidebar only on hover"			0
 @var checkbox				sidebar-hideSearch			"Hide sidebar searchbar"			0
-@var checkbox				sidebar-hideLike			"Hide sidebar 'You might like'"			0
-@var checkbox				sidebar-hideTrends			"Hide sidebar trends"				0
+@var checkbox				sidebar-hideFollow			"Hide sidebar 'Who to follow'"			0
+@var checkbox				sidebar-hideTrends			"Hide sidebar 'What's happening'"		0
 @var checkbox				sidebar-hideLegalNotice			"Hide sidebar legal notice"			0
 
 @var text Other			"━━━━━━⮞【Other】" '_'
@@ -50,6 +50,7 @@
 ==/UserStyle== */
 @-moz-document url-prefix("https://x.com") {
 
+	/* Formerly known as Twitter ¯\_(ツ)_/¯ */
 	:root:has(body[style*="rgb(0"]) {
 		--bg: rgb(0, 0, 0);
 	}
@@ -62,7 +63,6 @@
 		--bg: rgb(255, 255, 255);
 	}
 
-	/* Formerly known as Twitter ¯\_(ツ)_/¯ */
 	if wide {
 
 		html {
@@ -178,6 +178,7 @@
 	}
 
 	if timeline-grok {
+
 		div[data-testid="GrokDrawer"],
 		button[aria-label*="Grok"],
 		a[aria-label*="Grok"],
@@ -337,20 +338,14 @@
 		}
 	}
 
-	if sidebar-hideLike {
-		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-last-child(3) {
-			display: none !important;
-		}
-	}
-
 	if sidebar-hideTrends {
-		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-last-child(2) {
+		[data-testid="sidebarColumn"]:has(section) div:has(> section) {
 			display: none !important;
 		}
 	}
 
 	if sidebar-hideLegalNotice {
-		[data-testid="sidebarColumn"]:has(section) > div > div > div > div > div > div:nth-last-child(1) {
+		[data-testid="sidebarColumn"]:has(section) div:has(> nav) {
 			display: none !important;
 		}
 	}
@@ -374,6 +369,17 @@
 	if other-hateBorders {
 		* {
 			border-color: transparent !important;
+		}
+	}
+}
+
+@-moz-document url-prefix("https://x.com/home") {
+
+	/* Home /*
+	/* ━━━━━━⮞ Sidebar */
+	if sidebar-hideFollow {
+		[data-testid="sidebarColumn"]:has(section) div:has(> div > aside) {
+			display: none !important;
 		}
 	}
 }
