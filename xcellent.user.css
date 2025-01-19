@@ -4,7 +4,7 @@
 @namespace			github.com/Himither
 @homepageURL			https://github.com/Himither/Xcellent
 @supportURL			https://github.com/Himither/Xcellent/issues
-@version			1.0.13
+@version			1.0.14
 @updateURL			https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description			Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author				Himither
@@ -23,6 +23,7 @@
 @var checkbox			timeline-postBorders		"Hide borders between posts"			0
 @var checkbox			timeline-imgBorders		"Hide borders around images"			0
 @var checkbox			timeline-quoteBorders		"Hide borders around quotes"			0
+@var checkbox			timeline-grok			"Hide grok stuff" 				0
 @var checkbox			timeline-quoteImg		"Round top corners for quote images"		0
 
 @var text Sidemenu		"━━━━━━⮞【Sidemenu】" '_'
@@ -63,11 +64,11 @@
 
 	/* Formerly known as Twitter ¯\_(ツ)_/¯ */
 	if wide {
-		
+
 		html {
 			overflow-x: hidden;
 		}
-		
+
 		header[role="banner"] {
 			position: absolute !important;
 			left: 0 !important;
@@ -231,6 +232,14 @@
 	if timeline-quoteBorders {
 		[data-testid="primaryColumn"] div[id^="id__"] > div:last-child[role="link"] {
 			border-color: transparent !important
+		}
+	}
+
+	if timeline-grok {
+		div[data-testid="GrokDrawer"],
+		button[aria-label*="Grok"],
+		a[aria-label*="Grok"] {
+			display: none;
 		}
 	}
 
