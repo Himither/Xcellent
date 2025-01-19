@@ -4,7 +4,7 @@
 @namespace			github.com/Himither
 @homepageURL			https://github.com/Himither/Xcellent
 @supportURL			https://github.com/Himither/Xcellent/issues
-@version			1.0.16
+@version			1.0.17
 @updateURL			https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description			Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author				Himither
@@ -184,7 +184,8 @@
 		div[data-testid="GrokDrawer"],
 		button[aria-label*="Grok"],
 		a[aria-label*="Grok"],
- 		button:has(path[d*="21h4.241L6.446"]) /* locate the SVG */{
+		button:has(path[d*="21h4.241L6.446"])/* locate the SVG */
+		{
 			display: none;
 		}
 	}
@@ -216,21 +217,15 @@
 		}
 	}
 
-	if timeline-postBorders {
-
-		[data-testid="primaryColumn"] nav,
-		[data-testid="primaryColumn"] section[role="region"] > div > div > div > div {
-			border-color: transparent !important
-		}
-	}
-
 	if timeline-postBorders or other-hateBorders {
-		[data-testid="primaryColumn"]:has(article) > div > div:nth-child(4),
-		[data-testid="primaryColumn"] section[role="region"] > div > div > div > div > div {
-			background-color: transparent !important;
+		[data-testid="primaryColumn"] nav {
+			border-bottom-color: transparent;
+		}
+
+		[data-testid="primaryColumn"] [role="separator"] {
+			background-color: var(--bg);
 		}
 	}
-
 
 	if timeline-imgBorders {
 		[data-testid="primaryColumn"] div[id^="id__"] > div > div > div > div {
