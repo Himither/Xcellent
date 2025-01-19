@@ -181,8 +181,7 @@
 		div[data-testid="GrokDrawer"],
 		button[aria-label*="Grok"],
 		a[aria-label*="Grok"],
-		button:has(path[d*="21h4.241L6.446"]) /* locate the SVG */
-			{
+		button:has(path[d*="21h4.241L6.446"]) {
 			display: none;
 		}
 	}
