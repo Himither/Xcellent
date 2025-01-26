@@ -4,7 +4,7 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.0.19
+@version				1.0.20
 @updateURL				https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author					Himither
@@ -182,7 +182,8 @@
 		div[data-testid="GrokDrawer"],
 		button[aria-label*="Grok"],
 		a[aria-label*="Grok"],
-		button:has(path[d*="21h4.241L6.446"]) {
+		button:has(path[d*="21h4.241L6.446"]),
+		[data-testid="tweet"] div:has(> nav) {
 			display: none;
 		}
 	}
