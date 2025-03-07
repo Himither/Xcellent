@@ -1,66 +1,116 @@
 /* ==UserStyle==
 
-@name					Xcellent
-@namespace				github.com/Himither
+@name						Xcellent
+@namespace					github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
-@supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.0.20
-@updateURL				https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
+@supportURL					https://github.com/Himither/Xcellent/issues
+@version					1.21.0
+@updateURL					https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
-@author					Himither
-@license				MIT
+@author						Himither
+@license					MIT
 @preprocessor				stylus
 
-@var checkbox				wide					"Make it wide"					1
-@var checkbox				timeline-grok				"Hide grok stuff" 				0
+@var checkbox				wide						"Make it wide"																	1
+@var checkbox				hideGrok					"Hide grok stuff" 																0
 
 @var text Timeline		"━━━━━━⮞【Timeline】" '_'
 
-@var range				timeline-width				"Timline max-width"				[900, 600, 1800, 1, "px"]
-@var checkbox				timeline-header				"Non-sticky timline header"			0
-@var checkbox				timeline-hideFollow			"Hide 'Who to follow'"				0
-@var checkbox				timeline-hideAds			"Hide Ads"					0
-@var checkbox				timeline-outerBorders			"Hide borders around timeline"			0
-@var checkbox				timeline-postBorders			"Hide borders between posts"			0
-@var checkbox				timeline-imgBorders			"Hide borders around images"			0
-@var checkbox				timeline-quoteBorders			"Hide borders around quotes"			0
-@var checkbox				timeline-quoteImg			"Round top corners for quote images"		0
+@var range					timeline-width				"Timeline max-width"																[900, 600, 1800, 1, "px"]
+@var checkbox				timeline-header				"Non-sticky timline header"														0
+@var checkbox				timeline-hideFollow			"Hide 'Who to follow'"															0
+@var checkbox				timeline-hideAds			"Hide Ads"																		0
+@var checkbox				timeline-outerBorders		"Hide borders around timeline"													0
+@var checkbox				timeline-postBorders		"Hide borders between posts"													0
+@var checkbox				timeline-imgBorders			"Hide borders around images"													0
+@var checkbox				timeline-quoteBorders		"Hide borders around quotes"													0
+@var checkbox				timeline-quoteImg			"Round top corners for quote images"											0
 
 @var text Sidemenu		"━━━━━━⮞【Sidemenu】" '_'
 
-@var checkbox				sidemenu-hover				"Show menu only on hover"			0
-@var checkbox				sidemenu-hidePremium			"Hide 'Premium' button"				0
-@var checkbox				sidemenu-hideJobs			"Hide 'Jobs' button"				0
-@var checkbox				sidemenu-hideVerifiedOrgs		"Hide 'Verified Orgs' button"			0
-@var checkbox				sidemenu-hidePost			"Hide 'Post' button"				0
+@var checkbox				sidemenu-hover				"Show menu only on hover"														0
+@var checkbox				sidemenu-hideHome			"Hide 'Home' button" 															0
+@var checkbox				sidemenu-hideExplore		"Hide 'Explore' button" 														0
+@var checkbox				sidemenu-hideNotifications	"Hide 'Notifications' button" 													0
+@var checkbox				sidemenu-hideMessages		"Hide 'Messages' button" 														0
+@var checkbox				sidemenu-hidePremium		"Hide 'Premium' button"															0
+@var checkbox				sidemenu-hideLists			"Hide 'Lists' button" 															0
+@var checkbox				sidemenu-hideBookmarks		"Hide 'Bookmarks' button" 														0
+@var checkbox				sidemenu-hideJobs			"Hide 'Jobs' button"															0
+@var checkbox				sidemenu-hideCommunities	"Hide 'Communities' button" 													0
+@var checkbox				sidemenu-hideVerifiedOrgs	"Hide 'Verified Orgs' button"													0
+@var checkbox				sidemenu-hideProfile		"Hide 'Profile' button" 														0
+@var checkbox				sidemenu-hideMore			"Hide 'More' button" 															0
+@var checkbox				sidemenu-hidePost			"Hide 'Post' button"															0
 
 @var text Sidebar		"━━━━━━⮞【Sidebar】" '_'
 
-@var checkbox				sidebar-hover				"Show sidebar only on hover"			0
-@var checkbox				sidebar-hideSearch			"Hide sidebar searchbar"			0
-@var checkbox				sidebar-hideFollow			"Hide sidebar 'Who to follow'"			0
-@var checkbox				sidebar-hideTrends			"Hide sidebar 'What's happening'"		0
-@var checkbox				sidebar-hideLegalNotice			"Hide sidebar legal notice"			0
+@var checkbox				sidebar-hover				"Show sidebar only on hover"													0
+@var checkbox				sidebar-hideSearch			"Hide sidebar searchbar"														0
+@var checkbox				sidebar-hideFollow			"Hide sidebar 'Who to follow'"													0
+@var checkbox				sidebar-hideTrends			"Hide sidebar 'What's happening'"												0
+@var checkbox				sidebar-hideLegalNotice		"Hide sidebar legal notice"														0
+
+@var text Customize		"━━━━━━⮞【Customize】" '_'
+
+@var text					customBG					"Custom background (Link to an image on X/Data URL wrapped in single quotes)"	"''"
+@var select					customBGAttachment			"Set background image behavior on scroll" {
+"Fixed*":					"fixed",
+"Scroll":					"scroll",
+"Local":					"local"
+}
+@var select					customBGPosition			"Set background image position" {
+"Center*":					"center",
+"Left":						"left",
+"Top":						"top",
+"Right":					"right",
+"Bottom":					"bottom"
+}
+@var select					customBGRepeat				"Set background image repeating behavior" {
+"No repeat*":				"no-repeat",
+"Repeat":					"repeat",
+"Repeat X":					"repeat-x",
+"Repeat Y":					"repeat-y",
+"Space":					"space",
+"Round":					"round"
+}
+@var select					customBGSize				"Set background image size" {
+"Cover*":					"cover",
+"Contain":					"contain",
+}
+@var range					menuOpacity					"Set background brightness"														[0.6, 0, 1, 0.01, '']
+@var select					changeLogo					"Change the logo" {
+"Default*":					"default",
+"Twitter":					"'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWw6c3BhY2U9InByZXNlcnZlIiB2aWV3Qm94PSIwIDAgMjQ4IDIwNCI+DQogIDxwYXRoIGZpbGw9IiMxZDliZjAiIGQ9Ik0yMjEuOTUgNTEuMjljLjE1IDIuMTcuMTUgNC4zNC4xNSA2LjUzIDAgNjYuNzMtNTAuOCAxNDMuNjktMTQzLjY5IDE0My42OXYtLjA0Yy0yNy40NC4wNC01NC4zMS03LjgyLTc3LjQxLTIyLjY0IDMuOTkuNDggOCAuNzIgMTIuMDIuNzMgMjIuNzQuMDIgNDQuODMtNy42MSA2Mi43Mi0yMS42Ni0yMS42MS0uNDEtNDAuNTYtMTQuNS00Ny4xOC0zNS4wNyA3LjU3IDEuNDYgMTUuMzcgMS4xNiAyMi44LS44Ny0yMy41Ni00Ljc2LTQwLjUxLTI1LjQ2LTQwLjUxLTQ5LjV2LS42NGM3LjAyIDMuOTEgMTQuODggNi4wOCAyMi45MiA2LjMyQzExLjU4IDYzLjMxIDQuNzQgMzMuNzkgMTguMTQgMTAuNzFjMjUuNjQgMzEuNTUgNjMuNDcgNTAuNzMgMTA0LjA4IDUyLjc2LTQuMDctMTcuNTQgMS40OS0zNS45MiAxNC42MS00OC4yNSAyMC4zNC0xOS4xMiA1Mi4zMy0xOC4xNCA3MS40NSAyLjE5IDExLjMxLTIuMjMgMjIuMTUtNi4zOCAzMi4wNy0xMi4yNi0zLjc3IDExLjY5LTExLjY2IDIxLjYyLTIyLjIgMjcuOTMgMTAuMDEtMS4xOCAxOS43OS0zLjg2IDI5LTcuOTUtNi43OCAxMC4xNi0xNS4zMiAxOS4wMS0yNS4yIDI2LjE2eiIvPg0KPC9zdmc+'",
+"Custom":					"customLogo"
+}
+@var text					customLogo					"Custom logo (Link to an image on X/Data URL wrapped in single quotes)" 		"''"
+@var range					resizeLogo					"Logo size" [75, 50, 150, 1, "%"]
 
 @var text Other			"━━━━━━⮞【Other】" '_'
 
-@var checkbox				other-hoverMessages			"Show Messages only on hover"			0
-@var checkbox				other-hateBorders			"Make all borders transparent"			0
+@var checkbox				other-hoverMessages			"Show Messages only on hover"													0
+@var checkbox				other-hateBorders			"Make all borders transparent"													0
 
 ==/UserStyle== */
 @-moz-document url-prefix("https://x.com") {
 
 	/* Formerly known as Twitter ¯\_(ツ)_/¯ */
 	:root:has(body[style*="rgb(0"]) {
-		--bg: rgb(0, 0, 0);
+		--bg: rgba(0, 0, 0, menuOpacity);
 	}
 
 	:root:has(body[style*="rgb(21"]) {
-		--bg: rgb(21, 32, 43);
+		--bg: rgba(21, 32, 43, menuOpacity);
 	}
 
 	:root:has(body[style*="rgb(255"]) {
-		--bg: rgb(255, 255, 255);
+		--bg: rgba(255, 255, 255, menuOpacity);
+	}
+
+	:root {
+		--br8: 8px;
+		--br16: 16px;
 	}
 
 	if wide {
@@ -107,13 +157,14 @@
 		}
 
 		[data-testid="sidebarColumn"] {
-			position: absolute !important;
-			right: 0 !important;
-			padding-right: 32px !important;
-			margin-right: 0 !important;
-			width: 382px !important;
-			min-width: unset !important;
-			max-width: unset !important;
+			position: fixed;
+			right: 0;
+			padding-left: 32px;
+			padding-right: 32px;
+			margin-right: 0;
+			width: 414px;
+			min-width: unset;
+			max-width: unset;
 		}
 
 		[data-testid="sidebarColumn"] > div {
@@ -122,7 +173,12 @@
 		}
 
 		[data-testid="sidebarColumn"] > div > div {
-			width: 350px !important;
+			position: absolute;
+			min-height: 100dvh;
+			width: 350px;
+			margin-top: 0 !important;
+			top: 0 !important;
+			bottom: 0 !important;
 		}
 
 		if sidemenu-hover or sidebar-hover {
@@ -136,7 +192,7 @@
 				left: 0 !important;
 			}
 
-			header[role="banner"] > div > div {
+			header[role="banner"]:hover > div > div {
 				background-color: var(--bg) !important;
 			}
 		}
@@ -159,8 +215,20 @@
 				width: 68px !important;
 			}
 
-			[data-testid="primaryColumn"] {
-				left: 68px !important;
+			if sidemenu-hover {
+				[data-testid="primaryColumn"] {
+					left: 0 !important;
+				}
+			}
+
+			else {
+				[data-testid="primaryColumn"] {
+					left: 68px !important;
+				}
+			}
+
+			[data-testid="sidebarColumn"] > div > div > div > div > div > div > div:has([role="search"]) {
+				width: 350px;
 			}
 		}
 
@@ -171,34 +239,29 @@
 		}
 
 		@media screen and (max-width: 499px) {
-			[data-testid="primaryColumn"] {
-				left: 0 !important;
+			if sidemenu-hover {
+				[data-testid="primaryColumn"] {
+					left: 0 !important;
+				}
 			}
 		}
 	}
 
-	if timeline-grok {
+	if hideGrok {
 
 		div[data-testid="GrokDrawer"],
 		button[aria-label*="Grok"],
-		a[aria-label*="Grok"],
+		a[href$="grok"],
 		button:has(path[d*="21h4.241L6.446"]),
 		[data-testid="tweet"] div:has(> nav) {
 			display: none;
 		}
 	}
 
-	/* ━━━━━━⮞ Timeline */
+	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Timeline */
 	if timeline-header {
 		[data-testid="primaryColumn"] > div > div:first-child {
 			position: unset !important;
-		}
-	}
-
-	if timeline-outerBorders {
-
-		[data-testid="primaryColumn"] {
-			border-color: transparent !important
 		}
 	}
 
@@ -209,8 +272,17 @@
 	}
 
 	if timeline-hideAds {
-		main section > div > div > div:has(article > div > div > div > div > div > div > div > div > div > span) {
+		main section > div > div > div:has(article > div > div > div > div > div > div > div > div > div > span),
+		[data-testid="cellInnerDiv"]:has(> div > div > [data-testid="placementTracking"]),
+		[data-testid="cellInnerDiv"]:has([data-testid="inlinePrompt"]) {
 			display: none !important;
+		}
+	}
+
+	if timeline-outerBorders {
+
+		[data-testid="primaryColumn"] {
+			border-color: transparent !important
 		}
 	}
 
@@ -220,7 +292,7 @@
 		}
 
 		[data-testid="primaryColumn"] [role="separator"] {
-			background-color: var(--bg);
+			background-color: transparent;
 		}
 	}
 
@@ -238,11 +310,11 @@
 
 	if timeline-quoteImg {
 		div[data-testid="tweetPhoto"] {
-			border-radius: 16px;
+			border-radius: var(--br16);
 		}
 	}
 
-	/* ━━━━━━⮞ Side menu */
+	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Side menu */
 	if sidemenu-hover {
 		header[role="banner"] > div > div {
 			opacity: 0 !important;
@@ -274,31 +346,85 @@
 		}
 	}
 
+	if sidemenu-hideHome {
+		nav a[href$="home"] {
+			display: none;
+		}
+	}
+
+	if sidemenu-hideExplore {
+		nav a[href$="explore"] {
+			display: none;
+		}
+	}
+
+	if sidemenu-hideNotifications {
+		nav a[href$="notifications"] {
+			display: none;
+		}
+	}
+
+	if sidemenu-hideMessages {
+		nav a[href$="messages"] {
+			display: none;
+		}
+	}
+
 	if sidemenu-hidePremium {
-		header a[data-testid="premium-hub-tab"] {
+		nav a[data-testid="premium-hub-tab"] {
+			display: none;
+		}
+	}
+
+	if sidemenu-hideLists {
+		nav a[href$="lists"] {
+			display: none;
+		}
+	}
+
+	if sidemenu-hideBookmarks {
+		nav a[href$="bookmarks"] {
 			display: none;
 		}
 	}
 
 	if sidemenu-hideJobs {
-		header a[data-testid="jobs-tab-item"] {
+		nav a[data-testid="jobs-tab-item"] {
+			display: none;
+		}
+	}
+
+	if sidemenu-hideCommunities {
+		nav a[href$="communities"] {
 			display: none;
 		}
 	}
 
 	if sidemenu-hideVerifiedOrgs {
-		header a[data-testid="vo-signup-tab"] {
+		nav a[data-testid="vo-signup-tab"] {
+			display: none;
+		}
+	}
+
+	if sidemenu-hideProfile {
+		nav a[data-testid="AppTabBar_Profile_Link"] {
+			display: none;
+		}
+	}
+
+	if sidemenu-hideMore {
+		nav button[data-testid="AppTabBar_More_Menu"] {
 			display: none;
 		}
 	}
 
 	if sidemenu-hidePost {
-		header div:has(> a[data-testid="SideNav_NewTweet_Button"]) {
+		header div:has( > a[data-testid="SideNav_NewTweet_Button"]) {
 			display: none;
 		}
 	}
 
-	/* ━━━━━━⮞ Sidebar */
+	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Sidebar */
 	if sidebar-hover {
 		[data-testid="sidebarColumn"] {
 			height: 100dvh !important;
@@ -340,18 +466,109 @@
 	}
 
 	if sidebar-hideTrends {
-		[data-testid="sidebarColumn"]:has(section) div:has(> section) {
+		[data-testid="sidebarColumn"]:has(section) div:has( > section) {
 			display: none !important;
 		}
 	}
 
 	if sidebar-hideLegalNotice {
-		[data-testid="sidebarColumn"]:has(section) div:has(> nav) {
+		[data-testid="sidebarColumn"]:has(section) div:has( > nav) {
 			display: none !important;
 		}
 	}
 
-	/* ━━━━━━⮞ Others */
+	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Customize */
+	if customBG!='' {
+		:root {
+			background-attachment: customBGAttachment;
+			background-image: url(customBG);
+			background-position: customBGPosition;
+			background-repeat: customBGRepeat;
+			background-size: customBGSize;
+		}
+
+		body {
+			background-color: var(--bg) !important;
+			border-bottom: solid transparent 6969dvh;
+		}
+
+		[style$="234);"],
+		[style$="123);"] {
+			/* Inline change, must be !important*/
+			color: white !important;
+		}
+
+
+		[data-testid="primaryColumn"] div:not(div:has([role="menuitem"])),
+		[data-testid="sidebarColumn"] div,
+		header[role="banner"] > div > div,
+		[data-testid="sidebarColumn"],
+		[data-testid="primaryColumn"] {
+			background-color: transparent;
+		}
+
+		[data-testid="tweet"]:focus {
+			background-color: rgba(255, 255, 255, 0.3);
+		}
+
+		article[data-testid="tweet"] div[role="group"] {
+			border-top-color: transparent;
+			border-bottom-color: transparent;
+		}
+
+		[data-testid="cellInnerDiv"] > div {
+			border-bottom-color: transparent;
+		}
+
+		[data-testid="ScrollSnap-List"] [role="link"],
+		[data-testid="sidebarColumn"] div:has(> [role]),
+		[data-testid="sidebarColumn"] div:has(> div > [role]),
+		[data-testid="sidebarColumn"] form[role="search"] > div > div,
+		[data-testid="card.wrapper"] {
+			border-color: gray;
+		}
+
+		a[style*="113);"] {
+			border-color: gray !important;
+		}
+
+		[data-testid="ScrollSnap-prevButtonWrapper"] + [data-testid="ScrollSnap-SwipeableList"] {
+			border-bottom-left-radius: var(--br8);
+			border-bottom-right-radius: var(--br8);
+		}
+
+		[data-testid="primaryColumn"] > div > div > div {
+			border-bottom-right-radius: var(--br8);
+		}
+
+		[data-testid="tweet"],
+		[data-testid="cellInnerDiv"] > div > button {
+			border-radius: var(--br8);
+		}
+
+		[data-testid="tweetPhoto"] > div > div {
+			border-top-right-radius: var(--br16);
+			border-top-left-radius: var(--br16);
+		}
+	}
+
+	if changeLogo!=default {
+		header h1[role="heading"] {
+
+			& > a {
+				background-image: url(changeLogo);
+				background-size: resizeLogo;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			& > a > div {
+				display: none;
+			}
+		}
+	}
+
+	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Others */
 	if other-hoverMessages {
 		div#layers div[data-testid="DMDrawer"] {
 			opacity: 0 !important;
@@ -376,10 +593,10 @@
 
 @-moz-document url-prefix("https://x.com/home") {
 
-	/* Home /*
-	/* ━━━━━━⮞ Sidebar */
+	/* https://x.com/home /*
+	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Sidebar */
 	if sidebar-hideFollow {
-		[data-testid="sidebarColumn"]:has(section) div:has(> div > aside) {
+		[data-testid="sidebarColumn"]:has(section) div:has( > div > aside) {
 			display: none !important;
 		}
 	}
