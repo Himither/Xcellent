@@ -4,7 +4,7 @@
 @namespace					github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL					https://github.com/Himither/Xcellent/issues
-@version					1.21.0
+@version					1.21.1
 @updateURL					https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author						Himither
@@ -479,7 +479,7 @@
 
 	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Customize */
 	if customBG!='' {
-		:root {
+		html {
 			background-attachment: customBGAttachment;
 			background-image: url(customBG);
 			background-position: customBGPosition;
@@ -489,11 +489,11 @@
 
 		body {
 			background-color: var(--bg) !important;
-			border-bottom: solid transparent 6969dvh;
+			outline: solid var(--bg) 6969dvh;
 		}
 
 		[style$="234);"],
-		[style$="123);"] {
+		[style*="123);"] {
 			/* Inline change, must be !important*/
 			color: white !important;
 		}
@@ -503,12 +503,24 @@
 		[data-testid="sidebarColumn"] div,
 		header[role="banner"] > div > div,
 		[data-testid="sidebarColumn"],
-		[data-testid="primaryColumn"] {
+		[data-testid="primaryColumn"],
+		[role="dialog"] :not([role="group"] > div) {
 			background-color: transparent;
 		}
 
-		[data-testid="tweet"]:focus {
-			background-color: rgba(255, 255, 255, 0.3);
+		[data-testid="mask"] + [role="dialog"] > div > div > div,
+		button[style*="background-color"][style*="backdrop-filter"] {
+			background-color: transparent !important;
+		}
+
+		:is([data-testid="tweet"],
+		[data-testid="notification"]):focus {
+			background-color: rgba(0, 0, 0, 0.3);
+		}
+
+		#react-root div[role="dialog"] > div,
+		[role="menu"] {
+			background-color: rgba(0, 0, 0, 0.7);
 		}
 
 		article[data-testid="tweet"] div[role="group"] {
@@ -516,13 +528,14 @@
 			border-bottom-color: transparent;
 		}
 
-		[data-testid="cellInnerDiv"] > div {
+		[data-testid="cellInnerDiv"] > div,
+		[role="progressbar"] + div > div > div > div > div > div > div > div {
 			border-bottom-color: transparent;
 		}
 
 		[data-testid="ScrollSnap-List"] [role="link"],
-		[data-testid="sidebarColumn"] div:has(> [role]),
-		[data-testid="sidebarColumn"] div:has(> div > [role]),
+		[data-testid="sidebarColumn"] div:has( > [role]),
+		[data-testid="sidebarColumn"] div:has( > div > [role]),
 		[data-testid="sidebarColumn"] form[role="search"] > div > div,
 		[data-testid="card.wrapper"] {
 			border-color: gray;
@@ -542,6 +555,7 @@
 		}
 
 		[data-testid="tweet"],
+		[data-testid="notification"],
 		[data-testid="cellInnerDiv"] > div > button {
 			border-radius: var(--br8);
 		}
