@@ -54,6 +54,11 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 
 ## Changelog
 
+### 1.22.0
+- Sidemenu, sidebar & message now also show when focused (keyboard controls)
+  - This is especially useful for the / and g + u keyboard shortcuts
+- Messages now retains its original width when using the hover/focus option
+
 ### 1.21.0
 - **add option to set custom background**
 - improve hiding of sidemenu items (all of them can be hidden now)
