@@ -28,7 +28,7 @@
 
 @var text Sidemenu		"━━━━━━⮞【Sidemenu】" '_'
 
-@var checkbox				sidemenu-hover				"Show menu only on hover"														0
+@var checkbox				sidemenu-hover				"Show menu only on hover/focus"														0
 @var checkbox				sidemenu-hideHome			"Hide 'Home' button" 															0
 @var checkbox				sidemenu-hideExplore		"Hide 'Explore' button" 														0
 @var checkbox				sidemenu-hideNotifications	"Hide 'Notifications' button" 													0
@@ -45,7 +45,7 @@
 
 @var text Sidebar		"━━━━━━⮞【Sidebar】" '_'
 
-@var checkbox				sidebar-hover				"Show sidebar only on hover"													0
+@var checkbox				sidebar-hover				"Show sidebar only on hover/focus"													0
 @var checkbox				sidebar-hideSearch			"Hide sidebar searchbar"														0
 @var checkbox				sidebar-hideFollow			"Hide sidebar 'Who to follow'"													0
 @var checkbox				sidebar-hideTrends			"Hide sidebar 'What's happening'"												0
@@ -89,7 +89,7 @@
 
 @var text Other			"━━━━━━⮞【Other】" '_'
 
-@var checkbox				other-hoverMessages			"Show Messages only on hover"													0
+@var checkbox				other-hoverMessages			"Show Messages only on hover/focus"													0
 @var checkbox				other-hateBorders			"Make all borders transparent"													0
 
 ==/UserStyle== */
@@ -249,9 +249,10 @@
 
 	if hideGrok {
 
+		a[href$="grok"],
 		div[data-testid="GrokDrawer"],
 		button[aria-label*="Grok"],
-		a[href$="grok"],
+		button:has([d^="M12.745 20.54l10"]),
 		button:has(path[d*="21h4.241L6.446"]),
 		[data-testid="tweet"] div:has(> nav) {
 			display: none;
@@ -321,7 +322,8 @@
 			transition: all 300ms ease-in-out !important;
 		}
 
-		header[role="banner"] > div > div:hover {
+		header[role="banner"] > div > div:hover,
+		header[role="banner"] > div > div:has(:focus) {
 			opacity: 1 !important;
 		}
 
@@ -330,7 +332,8 @@
 				left: calc(-275px + 32px) !important;
 			}
 
-			header[role="banner"] > div > div:hover {
+			header[role="banner"] > div > div:hover,
+			header[role="banner"] > div > div:has(:focus) {
 				left: 0px !important;
 			}
 
@@ -432,7 +435,8 @@
 			transition: all 300ms ease-in-out !important;
 		}
 
-		[data-testid="sidebarColumn"]:hover {
+		[data-testid="sidebarColumn"]:hover,
+		[data-testid="sidebarColumn"]:has(:focus) {
 			opacity: 1 !important;
 		}
 
@@ -449,7 +453,8 @@
 				position: fixed !important;
 			}
 
-			[data-testid="sidebarColumn"]:hover {
+			[data-testid="sidebarColumn"]:hover,
+			[data-testid="sidebarColumn"]:has(:focus) {
 				transform: translateX(0) !important;
 			}
 
@@ -589,10 +594,12 @@
 			transform: translateX(90%) !important;
 			margin-right: 0px !important;
 			padding-right: 32px !important;
+			box-sizing: content-box;
 			transition: all 300ms ease-in-out !important;
 		}
 
-		div#layers div[data-testid="DMDrawer"]:hover {
+		div#layers div[data-testid="DMDrawer"]:hover,
+		div#layers div[data-testid="DMDrawer"]:has(:focus) {
 			opacity: 1 !important;
 			transform: translateX(0) !important;
 		}
