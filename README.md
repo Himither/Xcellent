@@ -1,17 +1,5 @@
 <h1 align="center"> Xcellent </h1>
 
-## Table of Contents
- 1. [Information](#information)
- 2. [Preview](#preview)
- 3. [Features](#features)
-    * [Timeline](#timeline)
-    * [Sidemenu ](#sidemenu-left)
-    * [Sidebar](#sidebar-right)
-    * [Customize](#customize)
-    * [Other](#other)
- 4. [Changelog](#changelog)
-
-## Information
 Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 
 > [!IMPORTANT]
@@ -21,6 +9,16 @@ Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 > * **Firefox**: https://addons.mozilla.org/en-US/firefox/addon/styl-us/ 
 
 [![Install directly with Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-00adad.svg)](https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css)
+
+## Table of Contents
+ 1. [Preview](#preview)
+ 2. [Features](#features)
+    * [Timeline](#timeline)
+    * [Sidemenu ](#sidemenu-left)
+    * [Sidebar](#sidebar-right)
+    * [Customize](#customize)
+    * [Other](#other)
+ 3. [Changelog](#changelog)
 
 ## Preview
 
