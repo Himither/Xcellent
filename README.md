@@ -7,9 +7,9 @@ Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 
 ## Preview
 
-https://github.com/user-attachments/assets/e7eac112-8a02-49c2-b01a-48837ba663d7
+https://github.com/user-attachments/assets/401436a7-c72b-4e5c-aa09-fb9f836e9d49
 
-https://github.com/user-attachments/assets/5a1dfe43-7c85-4eae-9812-2e5cb5d3e563
+https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 
 ![Preview](preview/xcellent.webp)
 
