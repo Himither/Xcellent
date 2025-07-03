@@ -1,7 +1,24 @@
-# Xcellent
+<h1 align="center"> Holodex & YouTube Tweaks </h1>
 
-## Description
+## Table of Contents
+ 1. [Information](#information)
+ 2. [Preview](#preview)
+ 3. [Features](#features)
+    * [Timeline](#timeline)
+    * [Sidemenu ](#sidemenu-left)
+    * [Sidebar](#sidebar-right)
+    * [Customize](#customize)
+    * [Other](#other)
+ 4. [Changelog](#changelog)
+
+## Information
 Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
+
+> [!IMPORTANT]
+> **For this installation link to work the stylus browser extension is necessary**
+> 
+> * **Chrome**: https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne
+> * **Firefox**: https://addons.mozilla.org/en-US/firefox/addon/styl-us/ 
 
 [![Install directly with Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-00adad.svg)](https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css)
 
@@ -17,7 +34,7 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 * Use full width and adjust timeline width
 * Hide grok stuff
 
-#### Timeline
+### Timeline
 * Stop timeline header scrolling along
 * Hide "Who to follow" and/or Ads
 * Hide various borders
@@ -27,7 +44,7 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
   * Around Quotes
 * Fully rounded quote images
 
-#### Sidemenu (Left)
+### Sidemenu (Left)
 * Show only on hover
 * Hide various buttons
   * *Premium* button
@@ -35,7 +52,7 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
   * *Verified Orgs* button
   * *Post* button
 
-#### Sidebar (Right)
+### Sidebar (Right)
 * Show only on hover
 * Hide various elements
   * Searchbar
@@ -43,11 +60,12 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
   * Trends
   * Legal notice
 
-#### Customize
+### Customize
 * Custom background
   * Adjust brightness, size, position, scroll-behavior & repeat-behavior
 * Custom logo
-#### Other
+
+### Other
 
 * Show messages only on hover
 * Make ALL borders transparent
