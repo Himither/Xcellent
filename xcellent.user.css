@@ -4,7 +4,7 @@
 @namespace					github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL					https://github.com/Himither/Xcellent/issues
-@version					1.21.1
+@version					1.22.0
 @updateURL					https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author						Himither
@@ -93,8 +93,8 @@
 @var checkbox				other-hateBorders			"Make all borders transparent"													0
 
 ==/UserStyle== */
-@-moz-document url-prefix("https://x.com") {
-
+@-moz-document url-prefix("https://x.com")
+{
 	/* Formerly known as Twitter ¯\_(ツ)_/¯ */
 	:root:has(body[style*="rgb(0"]) {
 		--bg: rgba(0, 0, 0, menuOpacity);
@@ -114,7 +114,6 @@
 	}
 
 	if wide {
-
 		html {
 			overflow-x: hidden;
 		}
@@ -210,7 +209,6 @@
 		}
 
 		@media screen and (max-width: 1264px) {
-
 			header[role="banner"] > div > div > div {
 				width: 68px !important;
 			}
@@ -248,7 +246,6 @@
 	}
 
 	if hideGrok {
-
 		a[href$="grok"],
 		div[data-testid="GrokDrawer"],
 		button[aria-label*="Grok"],
@@ -267,7 +264,9 @@
 	}
 
 	if timeline-hideFollow {
-		div[aria-label$="posts"] > div > div:not(:has(:is(article, a[href^="/i/status"], [role="progressbar"], button > div > svg))) {
+		div[aria-label$="posts"]
+			> div
+			> div:not(:has(:is(article, a[href^="/i/status"], [role="progressbar"], button > div > svg))) {
 			display: none !important;
 		}
 	}
@@ -281,9 +280,8 @@
 	}
 
 	if timeline-outerBorders {
-
 		[data-testid="primaryColumn"] {
-			border-color: transparent !important
+			border-color: transparent !important;
 		}
 	}
 
@@ -299,13 +297,13 @@
 
 	if timeline-imgBorders {
 		[data-testid="primaryColumn"] div[id^="id__"] > div > div > div > div {
-			border-color: transparent !important
+			border-color: transparent !important;
 		}
 	}
 
 	if timeline-quoteBorders {
 		[data-testid="primaryColumn"] div[id^="id__"] > div:last-child[role="link"] {
-			border-color: transparent !important
+			border-color: transparent !important;
 		}
 	}
 
@@ -422,7 +420,7 @@
 	}
 
 	if sidemenu-hidePost {
-		header div:has( > a[data-testid="SideNav_NewTweet_Button"]) {
+		header div:has(> a[data-testid="SideNav_NewTweet_Button"]) {
 			display: none;
 		}
 	}
@@ -471,19 +469,19 @@
 	}
 
 	if sidebar-hideTrends {
-		[data-testid="sidebarColumn"]:has(section) div:has( > section) {
+		[data-testid="sidebarColumn"]:has(section) div:has(> section) {
 			display: none !important;
 		}
 	}
 
 	if sidebar-hideLegalNotice {
-		[data-testid="sidebarColumn"]:has(section) div:has( > nav) {
+		[data-testid="sidebarColumn"]:has(section) div:has(> nav) {
 			display: none !important;
 		}
 	}
 
 	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Customize */
-	if customBG!='' {
+	if customBG!="" {
 		html {
 			background-attachment: customBGAttachment;
 			background-image: url(customBG);
@@ -503,7 +501,6 @@
 			color: white !important;
 		}
 
-
 		[data-testid="primaryColumn"] div:not(div:has([role="menuitem"])),
 		[data-testid="sidebarColumn"] div,
 		header[role="banner"] > div > div,
@@ -518,8 +515,7 @@
 			background-color: transparent !important;
 		}
 
-		:is([data-testid="tweet"],
-		[data-testid="notification"]):focus {
+		:is([data-testid="tweet"], [data-testid="notification"]):focus {
 			background-color: rgba(0, 0, 0, 0.3);
 		}
 
@@ -539,8 +535,8 @@
 		}
 
 		[data-testid="ScrollSnap-List"] [role="link"],
-		[data-testid="sidebarColumn"] div:has( > [role]),
-		[data-testid="sidebarColumn"] div:has( > div > [role]),
+		[data-testid="sidebarColumn"] div:has(> [role]),
+		[data-testid="sidebarColumn"] div:has(> div > [role]),
 		[data-testid="sidebarColumn"] form[role="search"] > div > div,
 		[data-testid="card.wrapper"] {
 			border-color: gray;
@@ -573,7 +569,6 @@
 
 	if changeLogo!=default {
 		header h1[role="heading"] {
-
 			& > a {
 				background-image: url(changeLogo);
 				background-size: resizeLogo;
@@ -612,12 +607,12 @@
 	}
 }
 
-@-moz-document url-prefix("https://x.com/home") {
-
+@-moz-document url-prefix("https://x.com/home")
+{
 	/* https://x.com/home /*
 	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Sidebar */
 	if sidebar-hideFollow {
-		[data-testid="sidebarColumn"]:has(section) div:has( > div > aside) {
+		[data-testid="sidebarColumn"]:has(section) div:has(> div > aside) {
 			display: none !important;
 		}
 	}
