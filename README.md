@@ -1,4 +1,4 @@
-<h1 align="center"> Holodex & YouTube Tweaks </h1>
+<h1 align="center"> Xcellent </h1>
 
 ## Table of Contents
  1. [Information](#information)
