@@ -16,7 +16,7 @@
 
 @var text Timeline		"━━━━━━⮞【Timeline】" '_'
 
-@var range					timeline-width				"Timeline max-width"																[900, 600, 1800, 1, "px"]
+@var range					timeline-width				"Timeline max-width"															[900, 600, 1800, 1, "px"]
 @var checkbox				timeline-header				"Non-sticky timline header"														0
 @var checkbox				timeline-hideFollow			"Hide 'Who to follow'"															0
 @var checkbox				timeline-hideAds			"Hide Ads"																		0
@@ -28,7 +28,7 @@
 
 @var text Sidemenu		"━━━━━━⮞【Sidemenu】" '_'
 
-@var checkbox				sidemenu-hover				"Show menu only on hover/focus"														0
+@var checkbox				sidemenu-hover				"Show menu only on hover/focus"													0
 @var checkbox				sidemenu-hideHome			"Hide 'Home' button" 															0
 @var checkbox				sidemenu-hideExplore		"Hide 'Explore' button" 														0
 @var checkbox				sidemenu-hideNotifications	"Hide 'Notifications' button" 													0
@@ -45,7 +45,7 @@
 
 @var text Sidebar		"━━━━━━⮞【Sidebar】" '_'
 
-@var checkbox				sidebar-hover				"Show sidebar only on hover/focus"													0
+@var checkbox				sidebar-hover				"Show sidebar only on hover/focus"												0
 @var checkbox				sidebar-hideSearch			"Hide sidebar searchbar"														0
 @var checkbox				sidebar-hideFollow			"Hide sidebar 'Who to follow'"													0
 @var checkbox				sidebar-hideTrends			"Hide sidebar 'What's happening'"												0
@@ -89,7 +89,7 @@
 
 @var text Other			"━━━━━━⮞【Other】" '_'
 
-@var checkbox				other-hoverMessages			"Show Messages only on hover/focus"													0
+@var checkbox				other-hoverMessages			"Show Messages only on hover/focus"												0
 @var checkbox				other-hateBorders			"Make all borders transparent"													0
 
 ==/UserStyle== */
