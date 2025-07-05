@@ -29,10 +29,18 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 ![Preview](preview/xcellent.webp)
 
 ## Features
-* Use full width and adjust timeline width
+
+### General
+* Make use of full width instead of just the center on widescreen resolutions
 * Hide grok stuff
+* Works with all colors
+
+> [!TIP]
+> * Press **" g + d "** to quickly customize your view / color scheme on **X**
+> * Press **" ? "** to see a list of all **X** keyboard shortcuts. There's a lot of useful ones!
 
 ### Timeline
+* Adjust timeline width
 * Stop timeline header scrolling along
 * Hide "Who to follow" and/or Ads
 * Hide various borders
@@ -45,9 +53,18 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 ### Sidemenu (Left)
 * Show only on hover
 * Hide various buttons
-  * *Premium* button
+  * *Home* button
+  * *Explorer* button
+  * *Notifications* button
+  * *Messages* button
+  + *Premium* button
+  * *Lists* button
+  * *Bookmarks* button
   * *Jobs* button
+  * *Communities* button
   * *Verified Orgs* button
+  * *Profile* button
+  * *More* button
   * *Post* button
 
 ### Sidebar (Right)
