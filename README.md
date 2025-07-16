@@ -1,6 +1,6 @@
 <h1 align="center"> Xcellent </h1>
 
-Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
+Adjustable timeline width, hide ads, grok and other elements, show certain elements only on hover & more
 
 > [!IMPORTANT]
 > **For this installation link to work the stylus browser extension is necessary**
