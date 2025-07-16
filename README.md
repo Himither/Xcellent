@@ -51,41 +51,46 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 * Fully rounded quote images
 
 ### Sidemenu (Left)
-* Show only on hover
-* Hide various buttons
-  * *Home* button
-  * *Explorer* button
-  * *Notifications* button
-  * *Messages* button
-  + *Premium* button
-  * *Lists* button
-  * *Bookmarks* button
-  * *Jobs* button
-  * *Communities* button
-  * *Verified Orgs* button
-  * *Profile* button
-  * *More* button
-  * *Post* button
-
+- Show only on hover
+- Hide various buttons
+  - *Home- button
+  - *Explorer- button
+  - *Notifications- button
+  - *Messages- button
+  - *Premium- button
+  - *Lists- button
+  - *Bookmarks- button
+  - *Jobs* button
+  - *Communities- button
+  - *Verified Orgs- button
+  - *Profile* button
+  - *More* butto-
+  - *Post* butto-
 ### Sidebar (Right)
-* Show only on hover
-* Hide various elements
-  * Searchbar
-  * "You might like"
-  * Trends
-  * Legal notice
+- Show only on hover
+- Hide various elements
+  - Searchbar
+  - "You might like"
+  - Trends
+  - Legal notice
 
 ### Customize
-* Custom background
-  * Adjust brightness, size, position, scroll-behavior & repeat-behavior
-* Custom logo
+- Custom background
+  - Adjust brightness, size, position, scroll-behavior & repeat-behavior
+- Custom logo
 
 ### Other
 
-* Show messages only on hover
-* Make ALL borders transparent
+- Show messages only on hover
+- Make ALL borders transparent
 
 ## Changelog
+
+### 1.23.0
+- No more scuffed settings pages
+- Strong glass/aero-look for sidemenu, sidebar & messages
+- Transparent messages (bottom-right) when using custom background or hover-messages
+- Weak glass/aero-look for primary column (timeline etc.) when using custom background
 
 ### 1.22.0
 - Sidemenu, sidebar & message now also show when focused (keyboard controls)
@@ -93,7 +98,7 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 - Messages now retains its original width when using the hover/focus option
 
 ### 1.21.0
-- **add option to set custom background**
+- -*add option to set custom background**
 - improve hiding of sidemenu items (all of them can be hidden now)
 - fix sidebar being iffy when scrolling down the timeline
 - adjust timeline position on the left on smaller screen sizes
