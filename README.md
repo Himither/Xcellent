@@ -86,6 +86,11 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 
 ## Changelog
 
+### 1.24.0
+- Improve visuals when using a custom background
+- A lot of adjusted backgrounds for menus and modals
+- Especially the settings pages look better now
+
 ### 1.23.0
 - No more scuffed settings pages
 - Strong glass/aero-look for sidemenu, sidebar & messages
