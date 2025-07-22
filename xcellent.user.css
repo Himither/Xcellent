@@ -4,7 +4,7 @@
 @namespace					github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL					https://github.com/Himither/Xcellent/issues
-@version					1.23.0
+@version					1.24.0
 @updateURL					https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
 @description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author						Himither
@@ -121,8 +121,20 @@
 		button[aria-label*="Grok"],
 		button:has([d^="M12.745 20.54l10"]),
 		button:has(path[d*="21h4.241L6.446"]),
-		[data-testid="tweet"] div:has(> nav) {
+		[data-testid="tweet"] div:has(> nav),
+		main:has(path[d^="M76.717"]) {
 			display: none;
+		}
+
+		body:has(main path[d^="M76.717"]) header::after {
+			content: "I thought you didn't want Grok?";
+			position: absolute;
+			top: 50dvh;
+			left: 50dvw;
+			color: white;
+			font-size: 69px;
+			transform: translate(-50%, -50%);
+			width: max-content;
 		}
 	}
 
@@ -183,7 +195,7 @@
 	}
 
 	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Side menu */
-	// General sidemenu-hover settings are in the ^https:\/\/x.com\/(?!settings).* section to stop messing up the settings pages
+	// General sidemenu-hover settings are in the ^https:\/\/x.com\/(?!settings).* section below to stop messing up the settings pages
 	if sidemenu-hideHome {
 		nav a[href$="home"] {
 			display: none;
@@ -263,7 +275,7 @@
 	}
 
 	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Sidebar */
-	// General sidebar-hover settings are in the ^https:\/\/x.com\/(?!settings).* section to stop messing up the settings pages
+	// General sidebar-hover settings are in the ^https:\/\/x.com\/(?!settings).* section below to stop messing up the settings pages
 	if sidebar-hideSearch {
 		[data-testid="sidebarColumn"]:has(section)>div>div>div>div>div>div:nth-child(1) {
 			display: none;
@@ -313,17 +325,27 @@
 		[data-testid="primaryColumn"] div:not(div:has([role="menuitem"])),
 		[data-testid="sidebarColumn"] div,
 		[data-testid="primaryColumn"],
-		[role="dialog"] :not([role="group"] > div) {
-			background-color: transparent;
+		[data-testid="mask"]+[role="dialog"]>div>div>div,
+		button[style*="background-color"][style*="backdrop-filter"],
+		div:has(> div > div > [data-testid="toolBar"]),
+ 		[data-testid="toolBar"] {
+			background-color: transparent !important;
 		}
-		
-		[data-testid="primaryColumn"] {
+
+		[data-testid="primaryColumn"],
+		[data-testid="Dropdown"] {
 			backdrop-filter: blur(2px);
 		}
 
-		[data-testid="mask"]+[role="dialog"]>div>div>div,
-		button[style*="background-color"][style*="backdrop-filter"] {
-			background-color: transparent !important;
+		[data-testid="primaryColumn"]>div>div>div,
+		[data-testid="primaryColumn"]>div>div>div>div>div>div>div {
+			backdrop-filter: none;
+		}
+
+		[id^="typeaheadDropdown"],
+		{
+			backdrop-filter: blur(10px);
+			background-color: rgba(0, 0, 0, menuOpacity/2) !important;
 		}
 
 		:is([data-testid="tweet"],
@@ -332,7 +354,8 @@
 		}
 
 		#react-root div[role="dialog"]>div,
-		[role="menu"] {
+		[role="menu"],
+		[data-testid="confirmationSheetDialog"] {
 			background-color: rgba(0, 0, 0, 0.7);
 		}
 
@@ -350,20 +373,16 @@
 		[data-testid="sidebarColumn"] div:has( > [role]),
 		[data-testid="sidebarColumn"] div:has( > div > [role]),
 		[data-testid="sidebarColumn"] form[role="search"]>div>div,
-		[data-testid="card.wrapper"] {
-			border-color: gray;
-		}
-
+		[data-testid="card.wrapper"],
+		form[role=search]>div>div,
+		main>div>div>div>div>div>div>div>div>div:has(input),
 		a[style*="113);"] {
 			border-color: gray !important;
 		}
 
+
 		[data-testid="ScrollSnap-prevButtonWrapper"]+[data-testid="ScrollSnap-SwipeableList"] {
 			border-bottom-left-radius: var(--br8);
-			border-bottom-right-radius: var(--br8);
-		}
-
-		[data-testid="primaryColumn"]>div>div>div {
 			border-bottom-right-radius: var(--br8);
 		}
 
@@ -413,6 +432,18 @@
 		}
 	}
 
+	if other-hoverMessages or customBG!='' {
+		[data-testid="DMDrawer"]>div {
+			box-shadow: unset;
+			backdrop-filter: blur(10px);
+			background-color: rgba(0, 0, 0, menuOpacity/2);
+		}
+
+		[data-testid="DMDrawer"] * {
+			background-color: transparent;
+		}
+	}
+
 	if other-hateBorders {
 		* {
 			border-color: transparent !important;
@@ -420,18 +451,9 @@
 	}
 }
 
-@-moz-document url-prefix("https://x.com/home") {
-
-	/* https://x.com/home /*
-	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Sidebar */
-	if sidebar-hideFollow {
-		[data-testid="sidebarColumn"]:has(section) div:has( > div > aside) {
-			display: none !important;
-		}
-	}
-}
-
 @-moz-document regexp("^https:\/\/x.com\/(?!settings).*") {
+
+	/* Styling for everywhere but the settings pages */
 	if wide {
 
 		html {
@@ -576,8 +598,6 @@
 			opacity: 1 !important;
 		}
 
-
-
 		if wide {
 			header[role="banner"]>div>div {
 				left: calc(-275px + 32px) !important;
@@ -650,16 +670,51 @@
 			background-color: rgba(0, 0, 0, menuOpacity/2);
 		}
 	}
+}
 
-	if other-hoverMessages or customBG!='' {
-		[data-testid="DMDrawer"]>div {
-			box-shadow: unset;
+
+@-moz-document url-prefix("https://x.com/home") {
+
+	if sidebar-hideFollow {
+		[data-testid="sidebarColumn"]:has(section) div:has( > div > aside) {
+			display: none !important;
+		}
+	}
+}
+
+
+@-moz-document url-prefix("https://x.com/settings") {
+
+	if customBG!='' {
+		main>div {
 			backdrop-filter: blur(10px);
-			background-color: rgba(0, 0, 0, menuOpacity/2);
+			background-color: rgba(0, 0, 0, menuOpacity/2) !important;
 		}
 
-		[data-testid="DMDrawer"] * {
-			background-color: transparent;
+		section {
+			border: none !important;
+		}
+
+		section>div,
+		section>div>div>div>div,
+		form>div>div>div {
+			background-color: transparent !important;
+		}
+
+		section>div>div>div>div {
+			backdrop-filter: none !important;
+		}
+
+		form>div>div>div {
+			border-color: gray !important;
+		}
+
+		[data-testid="activeRoute"]:has([aria-selected="true"]),
+		[data-testid="activeRoute"] a:hover,
+		[data-testid="activeRoute"] a:focus,
+		main a:hover,
+		main a:focus {
+			background-color: rgba(0, 0, 0, menuOpacity/2) !important;
 		}
 	}
 }
