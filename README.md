@@ -86,6 +86,9 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 
 ## Changelog
 
+### 1.25.1
+- Adjust some background/border colors rules
+
 ### 1.24.0
 - Improve visuals when using a custom background
 - A lot of adjusted backgrounds for menus and modals
@@ -102,6 +105,10 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
   - This is especially useful for the / and g + u keyboard shortcuts
 - Messages now retains its original width when using the hover/focus option
 
+### 1.21.1
+- adjustments for custom background
+- properly increment minor version instead of patch version for adding features
+
 ### 1.21.0
 - add option to set custom background
 - improve hiding of sidemenu items (all of them can be hidden now)
@@ -109,6 +116,3 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 - adjust timeline position on the left on smaller screen sizes
 - hide adds on the right side when viewing media
 - add changelog (as you can see)
-### 1.21.1
-- adjustments for custom background
-- properly increment minor version instead of patch version for adding features
