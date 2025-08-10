@@ -86,6 +86,11 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 
 ## Changelog
 
+### 1.24.0
+- Improve visuals when using a custom background
+- A lot of adjusted backgrounds for menus and modals
+- Especially the settings pages look better now
+
 ### 1.23.0
 - No more scuffed settings pages
 - Strong glass/aero-look for sidemenu, sidebar & messages
@@ -98,7 +103,7 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 - Messages now retains its original width when using the hover/focus option
 
 ### 1.21.0
-- -*add option to set custom background**
+- add option to set custom background
 - improve hiding of sidemenu items (all of them can be hidden now)
 - fix sidebar being iffy when scrolling down the timeline
 - adjust timeline position on the left on smaller screen sizes
