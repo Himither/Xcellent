@@ -1,56 +1,55 @@
 /* ==UserStyle==
 
-@name						Xcellent
-@namespace					github.com/Himither
+@name					Xcellent
+@namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
-@supportURL					https://github.com/Himither/Xcellent/issues
-@version					1.24.0
-@updateURL					https://raw.githubusercontent.com/Himither/Xcellent/master/xcellent.user.css
+@supportURL				https://github.com/Himither/Xcellent/issues
+@version				1.24.1
 @description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
-@author						Himither
-@license					MIT
+@author					Himither
+@license				MIT
 @preprocessor				stylus
 
-@var checkbox				wide						"Make it wide"																	1
-@var checkbox				hideGrok					"Hide grok stuff" 																0
+@var checkbox				wide					"Make it wide"								1
+@var checkbox				hideGrok				"Hide grok stuff" 							0
 
 @var text Timeline		"━━━━━━⮞【Timeline】" '_'
 
-@var range					timeline-width				"Timeline max-width"															[900, 600, 1800, 1, "px"]
-@var checkbox				timeline-header				"Non-sticky timline header"														0
-@var checkbox				timeline-hideFollow			"Hide 'Who to follow'"															0
-@var checkbox				timeline-hideAds			"Hide Ads"																		0
-@var checkbox				timeline-outerBorders		"Hide borders around timeline"													0
-@var checkbox				timeline-postBorders		"Hide borders between posts"													0
-@var checkbox				timeline-imgBorders			"Hide borders around images"													0
-@var checkbox				timeline-quoteBorders		"Hide borders around quotes"													0
-@var checkbox				timeline-quoteImg			"Round top corners for quote images"											0
+@var range				timeline-width				"Timeline max-width"							[900, 600, 1800, 1, "px"]
+@var checkbox				timeline-header				"Non-sticky timline header"						0
+@var checkbox				timeline-hideFollow			"Hide 'Who to follow / creators for you & similar posts'"		0
+@var checkbox				timeline-hideAds			"Hide Ads"								0
+@var checkbox				timeline-outerBorders			"Hide borders around timeline"						0
+@var checkbox				timeline-postBorders			"Hide borders between posts"						0
+@var checkbox				timeline-imgBorders			"Hide borders around images"						0
+@var checkbox				timeline-quoteBorders			"Hide borders around quotes"						0
+@var checkbox				timeline-quoteImg			"Round top corners for quote images"					0
 
 @var text Sidemenu		"━━━━━━⮞【Sidemenu】" '_'
 
-@var checkbox				sidemenu-hover				"Show menu only on hover/focus"													0
-@var checkbox				sidemenu-hideHome			"Hide 'Home' button" 															0
-@var checkbox				sidemenu-hideExplore		"Hide 'Explore' button" 														0
-@var checkbox				sidemenu-hideNotifications	"Hide 'Notifications' button" 													0
-@var checkbox				sidemenu-hideMessages		"Hide 'Messages' button" 														0
-@var checkbox				sidemenu-hidePremium		"Hide 'Premium' button"															0
-@var checkbox				sidemenu-hideLists			"Hide 'Lists' button" 															0
-@var checkbox				sidemenu-hideBookmarks		"Hide 'Bookmarks' button" 														0
-@var checkbox				sidemenu-hideJobs			"Hide 'Jobs' button"															0
-@var checkbox				sidemenu-hideCommunities	"Hide 'Communities' button" 													0
-@var checkbox				sidemenu-hideVerifiedOrgs	"Hide 'Verified Orgs' button"													0
-@var checkbox				sidemenu-hideProfile		"Hide 'Profile' button" 														0
-@var checkbox				sidemenu-hideMore			"Hide 'More' button" 															0
-@var checkbox				sidemenu-hidePost			"Hide 'Post' button"															0
+@var checkbox				sidemenu-hover				"Show menu only on hover/focus"						0
+@var checkbox				sidemenu-hideHome			"Hide 'Home' button" 							0
+@var checkbox				sidemenu-hideExplore			"Hide 'Explore' button" 						0
+@var checkbox				sidemenu-hideNotifications		"Hide 'Notifications' button" 						0
+@var checkbox				sidemenu-hideMessages			"Hide 'Messages' button" 						0
+@var checkbox				sidemenu-hidePremium			"Hide 'Premium' button"							0
+@var checkbox				sidemenu-hideLists			"Hide 'Lists' button" 							0
+@var checkbox				sidemenu-hideBookmarks			"Hide 'Bookmarks' button" 						0
+@var checkbox				sidemenu-hideJobs			"Hide 'Jobs' button"							0
+@var checkbox				sidemenu-hideCommunities		"Hide 'Communities' button" 						0
+@var checkbox				sidemenu-hideVerifiedOrgs		"Hide 'Verified Orgs' button"						0
+@var checkbox				sidemenu-hideProfile			"Hide 'Profile' button" 						0
+@var checkbox				sidemenu-hideMore			"Hide 'More' button" 							0
+@var checkbox				sidemenu-hidePost			"Hide 'Post' button"							0
 
 @var text Sidebar		"━━━━━━⮞【Sidebar】" '_'
 
-@var checkbox				sidebar-hover				"Show sidebar only on hover/focus"												0
-@var checkbox				sidebar-hideSearch			"Hide sidebar searchbar"														0
-@var checkbox				sidebar-hidePremium			"Hide 'Upgrade to Premium+'" 													0
-@var checkbox				sidebar-hideFollow			"Hide sidebar 'Who to follow'"													0
-@var checkbox				sidebar-hideTrends			"Hide sidebar 'What's happening'"												0
-@var checkbox				sidebar-hideLegalNotice		"Hide sidebar legal notice"														0
+@var checkbox				sidebar-hover				"Show sidebar only on hover/focus"					0
+@var checkbox				sidebar-hideSearch			"Hide sidebar searchbar"						0
+@var checkbox				sidebar-hidePremium			"Hide 'Upgrade to Premium+'" 						0
+@var checkbox				sidebar-hideFollow			"Hide sidebar 'Who to follow'"						0
+@var checkbox				sidebar-hideTrends			"Hide sidebar 'What's happening'"					0
+@var checkbox				sidebar-hideLegalNotice			"Hide sidebar legal notice"						0
 
 @var text Customize		"━━━━━━⮞【Customize】" '_'
 
@@ -146,7 +145,10 @@
 	}
 
 	if timeline-hideFollow {
-		div[aria-label$="posts"]>div>div:not(:has(:is(article, a[href^="/i/status"], [role="progressbar"], button > div > svg))) {
+		div[data-testid="cellInnerDiv"]:has(> div > div > div > h2),
+		div[data-testid="cellInnerDiv"]:has(> div > div > section),
+		div[data-testid="cellInnerDiv"]:has(> div > div > button),
+		div[data-testid="cellInnerDiv"]:has(> div > div > a) {
 			display: none !important;
 		}
 	}
@@ -159,7 +161,7 @@
 		}
 	}
 
-	if timeline-outerBorders {
+	if timeline-outerBorders or other-hateBorders {
 
 		[data-testid="primaryColumn"] {
 			border-color: transparent !important
@@ -167,23 +169,29 @@
 	}
 
 	if timeline-postBorders or other-hateBorders {
-		[data-testid="primaryColumn"] nav {
+		[data-testid="primaryColumn"] nav,
+		[data-testid="primaryColumn"] div:not([role="link"]):not([data-testid="card.wrapper"]):not(:has(input)),
+
+		{
 			border-bottom-color: transparent;
+			border-top-color: transparent;
 		}
 
-		[data-testid="primaryColumn"] [role="separator"] {
+		[data-testid="primaryColumn"] [role="separator"],
+		[data-testid="primaryColumn"]>div>div,
+		[data-testid="cellInnerDiv"]>div>div {
 			background-color: transparent;
 		}
 	}
 
-	if timeline-imgBorders {
+	if timeline-imgBorders or other-hateBorders {
 		[data-testid="primaryColumn"] div[id^="id__"]>div>div>div>div {
 			border-color: transparent !important
 		}
 	}
 
-	if timeline-quoteBorders {
-		[data-testid="primaryColumn"] div[id^="id__"]>div:last-child[role="link"] {
+	if timeline-quoteBorders or other-hateBorders {
+		[data-testid="tweet"] div[role="link"] {
 			border-color: transparent !important
 		}
 	}
@@ -195,7 +203,7 @@
 	}
 
 	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Side menu */
-	// General sidemenu-hover settings are in the ^https:\/\/x.com\/(?!settings).* section below to stop messing up the settings pages
+	/* General sidemenu-hover settings are in the ^https:\/\/x.com\/(?!settings).* section below to stop messing up the settings pages */
 	if sidemenu-hideHome {
 		nav a[href$="home"] {
 			display: none;
@@ -275,7 +283,7 @@
 	}
 
 	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Sidebar */
-	// General sidebar-hover settings are in the ^https:\/\/x.com\/(?!settings).* section below to stop messing up the settings pages
+	/* General sidebar-hover settings are in the ^https:\/\/x.com\/(?!settings).* section below to stop messing up the settings pages */
 	if sidebar-hideSearch {
 		[data-testid="sidebarColumn"]:has(section)>div>div>div>div>div>div:nth-child(1) {
 			display: none;
@@ -312,7 +320,7 @@
 
 		body {
 			background-color: rgba(0, 0, 0, menuOpacity) !important;
-			outline: solid rgba(0, 0, 0, menuOpacity) 6969dvh;
+			outline: solid rgba(0, 0, 0, menuOpacity) 696969dvh;
 		}
 
 		[style$="234);"],
@@ -322,13 +330,13 @@
 		}
 
 
-		[data-testid="primaryColumn"] div:not(div:has([role="menuitem"])),
+		[data-testid="primaryColumn"] div:not(div:has([role="menuitem"])):not(div[data-testid="scrubber"] div),
 		[data-testid="sidebarColumn"] div,
 		[data-testid="primaryColumn"],
 		[data-testid="mask"]+[role="dialog"]>div>div>div,
 		button[style*="background-color"][style*="backdrop-filter"],
 		div:has(> div > div > [data-testid="toolBar"]),
- 		[data-testid="toolBar"] {
+		[data-testid="toolBar"] {
 			background-color: transparent !important;
 		}
 
@@ -342,8 +350,7 @@
 			backdrop-filter: none;
 		}
 
-		[id^="typeaheadDropdown"],
-		{
+		[id^="typeaheadDropdown"] {
 			backdrop-filter: blur(10px);
 			background-color: rgba(0, 0, 0, menuOpacity/2) !important;
 		}
@@ -542,10 +549,6 @@
 
 			[data-testid="sidebarColumn"]:hover {
 				width: 414px !important;
-
-				if not customBG!='' {
-					background-color: var(--bg) !important;
-				}
 			}
 		}
 
@@ -637,6 +640,11 @@
 		[data-testid="sidebarColumn"]:hover,
 		[data-testid="sidebarColumn"]:has(:focus) {
 			opacity: 1 !important;
+		}
+
+		/* No rectangle background around the sidebar search field */
+		[data-testid="sidebarColumn"] div[tabindex="0"]>div>div:has(form) {
+			background-color: transparent !important;
 		}
 
 
