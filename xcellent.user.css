@@ -4,7 +4,7 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.24.1
+@version				1.24.2
 @description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author					Himither
 @license				MIT
@@ -425,22 +425,23 @@
 	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Others */
 	if other-hoverMessages {
 
-		div#layers div[data-testid="chat-drawer-root"] {
+		[data-testid="chat-drawer-root"] {
 			box-sizing: content-box;
-			transform: translateX(336px);
-			transition: all 300ms ease-in-out;
+			margin-right: 0;
 			opacity: 0
-		}
-		
-		div#layers div[data-testid="chat-drawer-root"]:has(div.pointer-events-none.invisible) {
-			transform: translateX(10%);
+			padding-left: 64px;
+			padding-right: 20px;
+			pointer-events: all !important;
+			transform: translateX(420px);
+			transition: all 300ms ease-in-out;
 		}
 
-		div#layers div[data-testid="chat-drawer-root"]:hover,
-		div#layers div[data-testid="chat-drawer-root"]:focus-within,
-		div#layers div[data-testid="chat-drawer-root"]:has(button[aria-expanded="true"]) {
+
+		[data-testid="chat-drawer-root"]:hover,
+		[data-testid="chat-drawer-root"]:focus-within,
+		[data-testid="chat-drawer-root"]:has(button[aria-expanded="true"]) {
 			opacity: 1;
-			transform: translateX(0) !important;
+			transform: translateX(0);
 		}
 	}
 
