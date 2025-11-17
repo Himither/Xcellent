@@ -21,9 +21,11 @@
 		"Xcellent"
 	],
 	"editor.defaultFormatter": null,
+	"editor.detectIndentation": false,
 	"editor.formatOnPaste": false,
 	"editor.formatOnSave": false,
 	"editor.formatOnType": false,
+	"editor.tabSize": 8,
 	"files.associations": {
 		"xcellent.user.css": "stylus"
 	}

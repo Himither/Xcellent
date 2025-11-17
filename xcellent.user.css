@@ -4,94 +4,94 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.27.1
+@version				1.27.2
 @description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author					Himither
 @license				MIT
 @preprocessor				stylus
 
-@var checkbox				wide					"Make it wide"								1
-@var checkbox				hideGrok				"Hide grok stuff" 							0
+@var checkbox				wide					"Make it wide"									1
+@var checkbox				hideGrok				"Hide grok stuff" 								0
 @var checkbox				hideVerified				"Hide not verified notifications"						0
 
 @var text Timeline		"━━━━━━⮞【Timeline】" '_'
 
-@var range				timeline-width				"Timeline max-width"							[900, 600, 1800, 1, "px"]
-@var checkbox				timeline-header				"Non-sticky timline header"						0
-@var checkbox				timeline-hideFollow			"Hide 'Who to follow / creators for you & similar posts'"		0
-@var checkbox				timeline-hideAds			"Hide Ads"								0
-@var checkbox				timeline-outerBorders			"Hide borders around timeline"						0
-@var checkbox				timeline-postBorders			"Hide borders between posts"						0
-@var checkbox				timeline-imgBorders			"Hide borders around images"						0
-@var checkbox				timeline-quoteBorders			"Hide borders around quotes"						0
-@var checkbox				timeline-quoteImg			"Round top corners for quote images"					0
+@var range				timeline-width				"Timeline max-width"								[900, 600, 1800, 1, "px"]
+@var checkbox				timeline-header				"Non-sticky timline header"							0
+@var checkbox				timeline-hideFollow			"Hide 'Who to follow / creators for you & similar posts'"			0
+@var checkbox				timeline-hideAds			"Hide Ads"									0
+@var checkbox				timeline-outerBorders			"Hide borders around timeline"							0
+@var checkbox				timeline-postBorders			"Hide borders between posts"							0
+@var checkbox				timeline-imgBorders			"Hide borders around images"							0
+@var checkbox				timeline-quoteBorders			"Hide borders around quotes"							0
+@var checkbox				timeline-quoteImg			"Round top corners for quote images"						0
 
 @var text Sidemenu		"━━━━━━⮞【Sidemenu】" '_'
 
-@var checkbox				sidemenu-hover				"Show menu only on hover/focus"						0
-@var checkbox				sidemenu-hideHome			"Hide 'Home' button" 							0
-@var checkbox				sidemenu-hideExplore			"Hide 'Explore' button" 						0
-@var checkbox				sidemenu-hideNotifications		"Hide 'Notifications' button" 						0
-@var checkbox				sidemenu-hideChat			"Hide 'Chat' button" 							0
-@var checkbox				sidemenu-hidePremium			"Hide 'Premium' button"							0
-@var checkbox				sidemenu-hideLists			"Hide 'Lists' button" 							0
-@var checkbox				sidemenu-hideBookmarks			"Hide 'Bookmarks' button" 						0
-@var checkbox				sidemenu-hideJobs			"Hide 'Jobs' button"							0
-@var checkbox				sidemenu-hideCommunities		"Hide 'Communities' button" 						0
-@var checkbox				sidemenu-hideVerifiedOrgs		"Hide 'Verified Orgs' button"						0
-@var checkbox				sidemenu-hideProfile			"Hide 'Profile' button" 						0
-@var checkbox				sidemenu-hideMore			"Hide 'More' button" 							0
-@var checkbox				sidemenu-hidePost			"Hide 'Post' button"							0
+@var checkbox				sidemenu-hover				"Show menu only on hover/focus"							0
+@var checkbox				sidemenu-hideHome			"Hide 'Home' button" 								0
+@var checkbox				sidemenu-hideExplore			"Hide 'Explore' button" 							0
+@var checkbox				sidemenu-hideNotifications		"Hide 'Notifications' button" 							0
+@var checkbox				sidemenu-hideChat			"Hide 'Chat' button" 								0
+@var checkbox				sidemenu-hidePremium			"Hide 'Premium' button"								0
+@var checkbox				sidemenu-hideLists			"Hide 'Lists' button" 								0
+@var checkbox				sidemenu-hideBookmarks			"Hide 'Bookmarks' button" 							0
+@var checkbox				sidemenu-hideJobs			"Hide 'Jobs' button"								0
+@var checkbox				sidemenu-hideCommunities		"Hide 'Communities' button" 							0
+@var checkbox				sidemenu-hideVerifiedOrgs		"Hide 'Verified Orgs' button"							0
+@var checkbox				sidemenu-hideProfile			"Hide 'Profile' button" 							0
+@var checkbox				sidemenu-hideMore			"Hide 'More' button" 								0
+@var checkbox				sidemenu-hidePost			"Hide 'Post' button"								0
 
 @var text Sidebar		"━━━━━━⮞【Sidebar】" '_'
 
-@var checkbox				sidebar-hover				"Show sidebar only on hover/focus"					0
-@var checkbox				sidebar-hideSearch			"Hide sidebar searchbar"						0
-@var checkbox				sidebar-hidePremium			"Hide sidebar 'Upgrade to Premium+'" 					0
-@var checkbox				sidebar-hideFollow			"Hide sidebar 'Who to follow'"						0
-@var checkbox				sidebar-hideTrends			"Hide sidebar 'What's happening'"					0
-@var checkbox				sidebar-hideLegalNotice			"Hide sidebar legal notice"						0
+@var checkbox				sidebar-hover				"Show sidebar only on hover/focus"						0
+@var checkbox				sidebar-hideSearch			"Hide sidebar searchbar"							0
+@var checkbox				sidebar-hidePremium			"Hide sidebar 'Upgrade to Premium+'" 						0
+@var checkbox				sidebar-hideFollow			"Hide sidebar 'Who to follow'"							0
+@var checkbox				sidebar-hideTrends			"Hide sidebar 'What's happening'"						0
+@var checkbox				sidebar-hideLegalNotice			"Hide sidebar legal notice"							0
 
 @var text Customize		"━━━━━━⮞【Customize】" '_'
 
-@var text					customBG					"Custom background (Link to an image on X/Data URL wrapped in single quotes)"	"''"
-@var select					customBGAttachment			"Set background image behavior on scroll" {
-"Fixed*":					"fixed",
-"Scroll":					"scroll",
-"Local":					"local"
+@var text				customBG				"Custom background (Link to an image on X/Data URL wrapped in single quotes)"	"''"
+@var select				customBGAttachment			"Set background image behavior on scroll" {
+"Fixed*":				"fixed",
+"Scroll":				"scroll",
+"Local":				"local"
 }
-@var select					customBGPosition			"Set background image position" {
-"Center*":					"center",
-"Left":						"left",
-"Top":						"top",
-"Right":					"right",
-"Bottom":					"bottom"
+@var select				customBGPosition			"Set background image position" {
+"Center*":				"center",
+"Left":					"left",
+"Top":					"top",
+"Right":				"right",
+"Bottom":				"bottom"
 }
-@var select					customBGRepeat				"Set background image repeating behavior" {
+@var select				customBGRepeat				"Set background image repeating behavior" {
 "No repeat*":				"no-repeat",
-"Repeat":					"repeat",
-"Repeat X":					"repeat-x",
-"Repeat Y":					"repeat-y",
-"Space":					"space",
-"Round":					"round"
+"Repeat":				"repeat",
+"Repeat X":				"repeat-x",
+"Repeat Y":				"repeat-y",
+"Space":				"space",
+"Round":				"round"
 }
-@var select					customBGSize				"Set background image size" {
-"Cover*":					"cover",
-"Contain":					"contain",
+@var select				customBGSize				"Set background image size" {
+"Cover*":				"cover",
+"Contain":				"contain",
 }
-@var range					menuOpacity					"Decrease background brightness"												[0.6, 0, 1, 0.01, '']
-@var select					changeLogo					"Change the logo" {
-"Default*":					"default",
-"Twitter":					"'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWw6c3BhY2U9InByZXNlcnZlIiB2aWV3Qm94PSIwIDAgMjQ4IDIwNCI+DQogIDxwYXRoIGZpbGw9IiMxZDliZjAiIGQ9Ik0yMjEuOTUgNTEuMjljLjE1IDIuMTcuMTUgNC4zNC4xNSA2LjUzIDAgNjYuNzMtNTAuOCAxNDMuNjktMTQzLjY5IDE0My42OXYtLjA0Yy0yNy40NC4wNC01NC4zMS03LjgyLTc3LjQxLTIyLjY0IDMuOTkuNDggOCAuNzIgMTIuMDIuNzMgMjIuNzQuMDIgNDQuODMtNy42MSA2Mi43Mi0yMS42Ni0yMS42MS0uNDEtNDAuNTYtMTQuNS00Ny4xOC0zNS4wNyA3LjU3IDEuNDYgMTUuMzcgMS4xNiAyMi44LS44Ny0yMy41Ni00Ljc2LTQwLjUxLTI1LjQ2LTQwLjUxLTQ5LjV2LS42NGM3LjAyIDMuOTEgMTQuODggNi4wOCAyMi45MiA2LjMyQzExLjU4IDYzLjMxIDQuNzQgMzMuNzkgMTguMTQgMTAuNzFjMjUuNjQgMzEuNTUgNjMuNDcgNTAuNzMgMTA0LjA4IDUyLjc2LTQuMDctMTcuNTQgMS40OS0zNS45MiAxNC42MS00OC4yNSAyMC4zNC0xOS4xMiA1Mi4zMy0xOC4xNCA3MS40NSAyLjE5IDExLjMxLTIuMjMgMjIuMTUtNi4zOCAzMi4wNy0xMi4yNi0zLjc3IDExLjY5LTExLjY2IDIxLjYyLTIyLjIgMjcuOTMgMTAuMDEtMS4xOCAxOS43OS0zLjg2IDI5LTcuOTUtNi43OCAxMC4xNi0xNS4zMiAxOS4wMS0yNS4yIDI2LjE2eiIvPg0KPC9zdmc+'",
-"Custom":					"customLogo"
+@var range				menuOpacity				"Decrease background brightness"						[0.6, 0, 1, 0.01, '']
+@var select				changeLogo				"Change the logo" {
+"Default*":				"default",
+"Twitter":				"'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWw6c3BhY2U9InByZXNlcnZlIiB2aWV3Qm94PSIwIDAgMjQ4IDIwNCI+DQogIDxwYXRoIGZpbGw9IiMxZDliZjAiIGQ9Ik0yMjEuOTUgNTEuMjljLjE1IDIuMTcuMTUgNC4zNC4xNSA2LjUzIDAgNjYuNzMtNTAuOCAxNDMuNjktMTQzLjY5IDE0My42OXYtLjA0Yy0yNy40NC4wNC01NC4zMS03LjgyLTc3LjQxLTIyLjY0IDMuOTkuNDggOCAuNzIgMTIuMDIuNzMgMjIuNzQuMDIgNDQuODMtNy42MSA2Mi43Mi0yMS42Ni0yMS42MS0uNDEtNDAuNTYtMTQuNS00Ny4xOC0zNS4wNyA3LjU3IDEuNDYgMTUuMzcgMS4xNiAyMi44LS44Ny0yMy41Ni00Ljc2LTQwLjUxLTI1LjQ2LTQwLjUxLTQ5LjV2LS42NGM3LjAyIDMuOTEgMTQuODggNi4wOCAyMi45MiA2LjMyQzExLjU4IDYzLjMxIDQuNzQgMzMuNzkgMTguMTQgMTAuNzFjMjUuNjQgMzEuNTUgNjMuNDcgNTAuNzMgMTA0LjA4IDUyLjc2LTQuMDctMTcuNTQgMS40OS0zNS45MiAxNC42MS00OC4yNSAyMC4zNC0xOS4xMiA1Mi4zMy0xOC4xNCA3MS40NSAyLjE5IDExLjMxLTIuMjMgMjIuMTUtNi4zOCAzMi4wNy0xMi4yNi0zLjc3IDExLjY5LTExLjY2IDIxLjYyLTIyLjIgMjcuOTMgMTAuMDEtMS4xOCAxOS43OS0zLjg2IDI5LTcuOTUtNi43OCAxMC4xNi0xNS4zMiAxOS4wMS0yNS4yIDI2LjE2eiIvPg0KPC9zdmc+'",
+"Custom":				"customLogo"
 }
-@var text					customLogo					"Custom logo (Link to an image on X/Data URL wrapped in single quotes)" 		"''"
-@var range					resizeLogo					"Logo size" [75, 50, 150, 1, "%"]
+@var text				customLogo				"Custom logo (Link to an image on X/Data URL wrapped in single quotes)" 	"''"
+@var range				resizeLogo				"Logo size" [75, 50, 150, 1, "%"]
 
 @var text Other			"━━━━━━⮞【Other】" '_'
 
-@var checkbox				other-hoverMessages			"Show Messages only on hover/focus"												0
-@var checkbox				other-hateBorders			"Make all borders transparent"													0
+@var checkbox				other-hoverMessages			"Show Messages only on hover/focus"						0
+@var checkbox				other-hateBorders			"Make all borders transparent"							0
 
 ==/UserStyle== */
 @-moz-document url-prefix("https://x.com") {

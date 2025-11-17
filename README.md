@@ -86,6 +86,10 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 
 ## Changelog
 
+### 1.27.2
+- add rule to settings.json to always display with tab size 8
+- fix formatting for, hopefully, one last time
+
 ### 1.27.1
 - adjust sidemenu left spacing slightly
 
