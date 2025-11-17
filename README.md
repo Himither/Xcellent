@@ -52,20 +52,20 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 
 ### Sidemenu (Left)
 - Show only on hover
-- Hide various buttons
-  - *Home- button
-  - *Explorer- button
-  - *Notifications- button
-  - *Messages- button
-  - *Premium- button
-  - *Lists- button
-  - *Bookmarks- button
-  - *Jobs* button
-  - *Communities- button
-  - *Verified Orgs- button
-  - *Profile* button
-  - *More* butto-
-  - *Post* butto-
+- Hide various links
+  - Home
+  - Explorer
+  - Notifications
+  - Chat
+  - Premium
+  - Lists
+  - Bookmarks
+  - Jobs
+  - Communities
+  - Verified Orgs
+  - Profile
+  - More
+  - Post
 ### Sidebar (Right)
 - Show only on hover
 - Hide various elements
@@ -86,38 +86,41 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 
 ## Changelog
 
-### 1.27.0
-- Add hide not-verified reminder option
-- Fix hide sidemenu messages/chat link option
+### 1.27.1
+- adjust sidemenu left spacing slightly
 
-### 1.26.0
-- Adjust show-on-hover logic for bottom-right messages pop-up
-- Update minor cause I'm dumb an versions got messed up
+### **1.27.0**
+- add hide not-verified reminder option
+- fix hide sidemenu messages/chat link option
+
+### **1.26.0**
+- adjust show-on-hover logic for bottom-right messages pop-up
+- update minor cause I'm dumb an versions got messed up
 
 ### 1.25.1
-- Adjust some background/border colors rules
+- adjust some background/border colors rules
 
-### 1.24.0
-- Improve visuals when using a custom background
-- A lot of adjusted backgrounds for menus and modals
-- Especially the settings pages look better now
+### **1.24.0**
+- improve visuals when using a custom background
+- adjust backgrounds for menus and modals
+- fix especially the settings pages
 
-### 1.23.0
-- No more scuffed settings pages
-- Strong glass/aero-look for sidemenu, sidebar & messages
-- Transparent messages (bottom-right) when using custom background or hover-messages
+### **1.23.0**
+- unscuff settings pages
+- add strong glass/aero-look for sidemenu, sidebar & messages
+- make messages transparent (bottom-right) when using custom background or hover-messages
 - Weak glass/aero-look for primary column (timeline etc.) when using custom background
 
-### 1.22.0
-- Sidemenu, sidebar & message now also show when focused (keyboard controls)
-  - This is especially useful for the / and g + u keyboard shortcuts
-- Messages now retains its original width when using the hover/focus option
+### **1.22.0**
+**Note**: This is especially useful for the / and g + u keyboard shortcuts
+- make sidemenu, sidebar & message show when focused (keyboard controls)
+- make messages retains its original width when using the hover/focus option
 
 ### 1.21.1
-- adjustments for custom background
-- properly increment minor version instead of patch version for adding features
+- add adjustments for custom background
+- increment minor version instead of patch version for adding features
 
-### 1.21.0
+### **1.21.0**
 - add option to set custom background
 - improve hiding of sidemenu items (all of them can be hidden now)
 - fix sidebar being iffy when scrolling down the timeline

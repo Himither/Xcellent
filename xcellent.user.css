@@ -4,7 +4,7 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.27.0
+@version				1.27.1
 @description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author					Himither
 @license				MIT
@@ -12,7 +12,7 @@
 
 @var checkbox				wide					"Make it wide"								1
 @var checkbox				hideGrok				"Hide grok stuff" 							0
-@var checkbox				hideVerified				"Hide not verified notications"						0
+@var checkbox				hideVerified				"Hide not verified notifications"						0
 
 @var text Timeline		"━━━━━━⮞【Timeline】" '_'
 
@@ -458,7 +458,7 @@
 }
 
 @-moz-document regexp("^(?!.*connect_people).x\.com.$") {
-	/* Evverywherre but Connect page */
+	/* Everywhere but Connect page */
 	if timeline-hideFollow {
 		div[data-testid="cellInnerDiv"]:has(> div > div > div > h2),
 		div[data-testid="cellInnerDiv"]:has(> div > div > section),
@@ -471,7 +471,7 @@
 
 @-moz-document regexp("^https:\/\/x.com\/(?!settings).*") {
 
-	/* Evverywherre but Settings page */
+	/* Everywhere but Settings page */
 	if wide {
 
 		html {
@@ -479,18 +479,28 @@
 		}
 
 		header[role="banner"] {
-			position: absolute !important;
-			left: 0 !important;
+			position: absolute;
+			left: 0;
 		}
 
 		header[role="banner"]>div {
-			position: absolute !important;
-			left: 0 !important;
-			margin-left: 0 !important;
+			position: absolute;
+			left: 0;
+			margin-left: 0;
 		}
 
 		header[role="banner"]>div>div {
-			left: 0 !important;
+			left: 0;
+		}
+
+		header[role="banner"]>div>div>div {
+			padding-left: 5px;
+		}
+
+		@media (min-width: 600px) {
+			header[role="banner"]>div>div>div {
+				padding-left: 14.5px;
+			}
 		}
 
 		main[role="main"]>div {

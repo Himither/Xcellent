@@ -1,4 +1,10 @@
 {
+	"[javascript]": {
+		"editor.defaultFormatter": null
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": null
+	},
 	"cSpell.words": [
 		"github",
 		"progressbar",
@@ -13,5 +19,12 @@
 		"timline",
 		"upsell",
 		"Xcellent"
-	]
+	],
+	"editor.defaultFormatter": null,
+	"editor.formatOnPaste": false,
+	"editor.formatOnSave": false,
+	"editor.formatOnType": false,
+	"files.associations": {
+		"xcellent.user.css": "stylus"
+	}
 }
