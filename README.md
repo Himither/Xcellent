@@ -86,6 +86,10 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 
 ## Changelog
 
+### 1.27.0
+- Add hide not-verified reminder option
+- Fix hide sidemenu messages/chat link option
+
 ### 1.26.0
 - Adjust show-on-hover logic for bottom-right messages pop-up
 - Update minor cause I'm dumb an versions got messed up
