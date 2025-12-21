@@ -4,7 +4,7 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.28.0
+@version				1.28.1
 @description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author					Himither
 @license				MIT
@@ -24,7 +24,7 @@
 @var checkbox				timeline-postBorders			"Hide borders between posts"							0
 @var checkbox				timeline-imgBorders			"Hide borders around images"							0
 @var checkbox				timeline-quoteBorders			"Hide borders around quotes"							0
-@var checkbox				timeline-quoteImg			"Round top corners for quote images"						0
+@var checkbox				timeline-quoteImg			"Round corners for quote images"						0
 
 @var text Sidemenu		"━━━━━━⮞【Sidemenu】" '_'
 
@@ -123,7 +123,8 @@
 		button:has([d^="M12.745 20.54l10"]),
 		button:has(path[d*="21h4.241L6.446"]),
 		[data-testid="tweet"] div:has(> nav),
-		main:has(path[d^="M76.717"]) {
+		main:has(path[d^="M76.717"]),
+		aside li:has([data-testid="UserAvatar-Container-grok"]) {
 			display: none;
 		}
 
@@ -294,6 +295,12 @@
 	if sidebar-hidePremium {
 		[data-testid="sidebarColumn"]>div>div>div>div>div>div:has(a[href*="premium_tier_switch"]) {
 			display: none;
+		}
+	}
+
+	if sidebar-hideFollow {
+		[data-testid="sidebarColumn"]>div>div>div>div>div>div>div:has(a[href*="connect_people"]) {
+			display: none !important;
 		}
 	}
 
@@ -535,7 +542,7 @@
 			position: fixed;
 			right: 0;
 			padding-left: 32px;
-			padding-right: 32px;
+			padding-right: 16.5px;
 			margin-right: 0;
 			width: 414px;
 			min-width: unset;
@@ -711,11 +718,6 @@
 @-moz-document url-prefix("https://x.com/home") {
 
 	/* Home page*/
-	if sidebar-hideFollow {
-		[data-testid="sidebarColumn"]:has(section) div:has( > div > aside) {
-			display: none !important;
-		}
-	}
 }
 
 
