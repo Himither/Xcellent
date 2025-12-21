@@ -4,7 +4,7 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.27.3
+@version				1.28.0
 @description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author					Himither
 @license				MIT
@@ -292,7 +292,7 @@
 	}
 
 	if sidebar-hidePremium {
-		[data-testid="sidebarColumn"]>div>div>div>div>div>div>div:has(a[href*="premium_sign_up"]) {
+		[data-testid="sidebarColumn"]>div>div>div>div>div>div:has(a[href*="premium_tier_switch"]) {
 			display: none;
 		}
 	}
