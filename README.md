@@ -86,6 +86,15 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 
 ## Changelog
 
+### **1.30.0**
+- Improve timeline centering
+- Change default settings for a better first impression
+- Leave grok, premium, and chat pages unaffectd from the "wide" option
+- Add All-In-One optione to hide Premium-Annoyances
+- Make darker, transparent background sidemenu- and sidebar-background optional
+- Slight adjustment to messages-on-hover/focus option
+- Clean up CSS a lot
+
 ### **1.28.1**
 - Fix sidebar premium notice hide option
 - Extend grok hide option
