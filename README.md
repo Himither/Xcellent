@@ -86,7 +86,12 @@ https://github.com/user-attachments/assets/7c46821c-e212-4a7a-adb3-c9d9bbd6fe46
 
 ## Changelog
 
-### **1.38.0**
+### **1.28.1**
+- Fix sidebar premium notice hide option
+- Extend grok hide option
+- Adjust sidebar padding-right (distance from right edge)
+
+### **1.27.3**
 - add hide box shadows option
 
 ### 1.27.2
