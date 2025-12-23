@@ -4,8 +4,8 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.29.0
-@description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
+@version				1.30.0
+@description				Adjustable timeline width | Hide stuff (Grok, Premium, Ads, Annoyances) | Show stuff only on hover/focus (Sidemenu, Sidebar, Messages)
 @author					Himither
 @license				MIT
 @preprocessor				stylus
@@ -17,7 +17,7 @@
 
 @var text Timeline		"━━━━━━⮞【Timeline】" '_'
 
-@var range				timeline-width				"Timeline max-width"								[900, 600, 1800, 1, "px"]
+@var range				timeline-width				"Timeline max-width"								[900, 600, 1800, 1, ""]
 @var checkbox				timeline-header				"Non-sticky timline header"							0
 @var checkbox				timeline-hideAds			"Hide Ads"									0
 @var checkbox				timeline-hideFollow			"Hide 'Who to follow / creators for you & similar posts'"			0
@@ -30,7 +30,7 @@
 
 @var text Sidemenu		"━━━━━━⮞【Sidemenu】" '_'
 
-@var checkbox				sidemenu-hover				"Show menu only on hover/focus"							0
+@var checkbox				sidemenu-hover				"Show menu only on hover/focus"							1
 @var checkbox				sidemenu-hideHome			"Hide 'Home' button" 								0
 @var checkbox				sidemenu-hideExplore			"Hide 'Explore' button" 							0
 @var checkbox				sidemenu-hideNotifications		"Hide 'Notifications' button" 							0
@@ -47,7 +47,7 @@
 
 @var text Sidebar		"━━━━━━⮞【Sidebar】" '_'
 
-@var checkbox				sidebar-hover				"Show sidebar only on hover/focus"						0
+@var checkbox				sidebar-hover				"Show sidebar only on hover/focus"						1
 @var checkbox				sidebar-hideSearch			"Hide sidebar searchbar"							0
 @var checkbox				sidebar-hidePremium			"Hide sidebar 'Upgrade to Premium+'" 						0
 @var checkbox				sidebar-hideFollow			"Hide sidebar 'Who to follow'"							0
@@ -82,6 +82,7 @@
 "Contain":				"contain",
 }
 @var range				menuOpacity				"Decrease background brightness"						[0.6, 0, 1, 0.01, '']
+@var checkbox				sideMenusDarker				"Darker, transparent background for sidemenu and sidebar"			0
 @var select				changeLogo				"Change the logo" {
 "Default*":				"default",
 "Twitter":				"'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWw6c3BhY2U9InByZXNlcnZlIiB2aWV3Qm94PSIwIDAgMjQ4IDIwNCI+DQogIDxwYXRoIGZpbGw9IiMxZDliZjAiIGQ9Ik0yMjEuOTUgNTEuMjljLjE1IDIuMTcuMTUgNC4zNC4xNSA2LjUzIDAgNjYuNzMtNTAuOCAxNDMuNjktMTQzLjY5IDE0My42OXYtLjA0Yy0yNy40NC4wNC01NC4zMS03LjgyLTc3LjQxLTIyLjY0IDMuOTkuNDggOCAuNzIgMTIuMDIuNzMgMjIuNzQuMDIgNDQuODMtNy42MSA2Mi43Mi0yMS42Ni0yMS42MS0uNDEtNDAuNTYtMTQuNS00Ny4xOC0zNS4wNyA3LjU3IDEuNDYgMTUuMzcgMS4xNiAyMi44LS44Ny0yMy41Ni00Ljc2LTQwLjUxLTI1LjQ2LTQwLjUxLTQ5LjV2LS42NGM3LjAyIDMuOTEgMTQuODggNi4wOCAyMi45MiA2LjMyQzExLjU4IDYzLjMxIDQuNzQgMzMuNzkgMTguMTQgMTAuNzFjMjUuNjQgMzEuNTUgNjMuNDcgNTAuNzMgMTA0LjA4IDUyLjc2LTQuMDctMTcuNTQgMS40OS0zNS45MiAxNC42MS00OC4yNSAyMC4zNC0xOS4xMiA1Mi4zMy0xOC4xNCA3MS40NSAyLjE5IDExLjMxLTIuMjMgMjIuMTUtNi4zOCAzMi4wNy0xMi4yNi0zLjc3IDExLjY5LTExLjY2IDIxLjYyLTIyLjIgMjcuOTMgMTAuMDEtMS4xOCAxOS43OS0zLjg2IDI5LTcuOTUtNi43OCAxMC4xNi0xNS4zMiAxOS4wMS0yNS4yIDI2LjE2eiIvPg0KPC9zdmc+'",
@@ -92,9 +93,9 @@
 
 @var text Other			"━━━━━━⮞【Other】" '_'
 
-@var checkbox				other-hoverMessages			"Show Messages only on hover/focus"						0
+@var checkbox				other-hoverMessages			"Show Messages only on hover/focus"						1
 @var checkbox				other-hateBorders			"Make all borders transparent"							0
-@var checkbox				other-hideBoxShadows			"Hide shadow/shine around boxes"						0
+@var checkbox				other-hideBoxShadows			"Hide shadow/shine around boxes"						1
 
 ==/UserStyle== */
 @-moz-document url-prefix("https://x.com") {
@@ -143,8 +144,6 @@
 	}
 
 	if hidePremium {
-		nav a[data-testid="premium-hub-tab"],
-		[data-testid="sidebarColumn"]>div>div>div>div>div>div:has(a[href*="premium_tier_switch"]),
 		[data-testid="UserName"] a[href*="premium_sign_up"] {
 			display: none;
 		}
@@ -159,7 +158,7 @@
 	/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⮞ Timeline */
 	if timeline-header {
 		[data-testid="primaryColumn"]>div>div:first-child {
-			position: unset !important;
+			position: unset;
 		}
 	}
 
@@ -176,7 +175,7 @@
 	if timeline-outerBorders or other-hateBorders {
 
 		[data-testid="primaryColumn"] {
-			border-color: transparent !important
+			border-color: transparent;
 		}
 	}
 
@@ -198,13 +197,13 @@
 
 	if timeline-imgBorders or other-hateBorders {
 		[data-testid="primaryColumn"] div[id^="id__"]>div>div>div>div {
-			border-color: transparent !important
+			border-color: transparent;
 		}
 	}
 
 	if timeline-quoteBorders or other-hateBorders {
 		[data-testid="tweet"] div[role="link"] {
-			border-color: transparent !important
+			border-color: transparent;
 		}
 	}
 
@@ -240,7 +239,7 @@
 		}
 	}
 
-	if sidemenu-hidePremium {
+	if sidemenu-hidePremium or hidePremium {
 		nav a[data-testid="premium-hub-tab"] {
 			display: none;
 		}
@@ -302,7 +301,7 @@
 		}
 	}
 
-	if sidebar-hidePremium {
+	if sidebar-hidePremium or hidePremium {
 		[data-testid="sidebarColumn"]>div>div>div>div>div>div:has(a[href*="premium_tier_switch"]) {
 			display: none;
 		}
@@ -310,7 +309,7 @@
 
 	if sidebar-hideFollow {
 		[data-testid="sidebarColumn"]>div>div>div>div>div>div>div:has(a[href*="connect_people"]) {
-			display: none !important;
+			display: none;
 		}
 	}
 
@@ -337,14 +336,14 @@
 		}
 
 		body {
-			background-color: rgba(0, 0, 0, menuOpacity) !important;
-			outline: solid rgba(0, 0, 0, menuOpacity) 696969dvh;
+			background-color: rgba(0, 0, 0, menuOpacity) !important; //Inline change, must be !important
+			outline: solid rgba(0, 0, 0, menuOpacity) 99999vh;
 		}
+
 
 		[style$="234);"],
 		[style*="123);"] {
-			/* Inline change, must be !important*/
-			color: white !important;
+			color: white !important; //Inline change, must be !important
 		}
 
 
@@ -354,14 +353,12 @@
 		[data-testid="mask"]+[role="dialog"]>div>div>div,
 		button[style*="background-color"][style*="backdrop-filter"],
 		div:has(> div > div > [data-testid="toolBar"]),
-		[data-testid="toolBar"],
-		div[aria-modal="true"] div:not([role="cell"]>div) {
-			background-color: transparent !important;
+		[data-testid="toolBar"] {
+			background-color: transparent;
 		}
 
-		[data-testid="primaryColumn"],
 		[data-testid="Dropdown"] {
-			backdrop-filter: blur(2px);
+			background-color: rgba(0, 0, 0, menuOpacity);
 		}
 
 		[data-testid="primaryColumn"]>div>div>div,
@@ -369,9 +366,13 @@
 			backdrop-filter: none;
 		}
 
-		[id^="typeaheadDropdown"] {
+		[data-testid="sidebarColumn"] {
+			z-index: 1;
+		}
+
+		[data-testid="sidebarColumn"] [id^="typeaheadDropdown"] {
 			backdrop-filter: blur(10px);
-			background-color: rgba(0, 0, 0, menuOpacity*1.3) !important;
+			background-color: rgba(0, 0, 0, menuOpacity * 1.3);
 		}
 
 		:is([data-testid="tweet"],
@@ -403,7 +404,7 @@
 		form[role=search]>div>div,
 		main>div>div>div>div>div>div>div>div>div:has(input),
 		a[style*="113);"] {
-			border-color: gray !important;
+			border-color: transparent;
 		}
 
 
@@ -444,33 +445,40 @@
 	if other-hoverMessages {
 
 		[data-testid="chat-drawer-root"] {
+			width: 350px !important;
 			box-sizing: content-box;
 			margin-right: 0;
 			opacity: 0;
 			padding-left: 64px;
 			padding-right: 20px;
 			pointer-events: all !important;
-			transform: translateX(420px);
+			transform: translateX(370px);
 			transition: all 300ms ease-in-out;
 		}
 
-
-		[data-testid="chat-drawer-root"]:hover,
-		[data-testid="chat-drawer-root"]:focus-within,
-		[data-testid="chat-drawer-root"]:has(button[aria-expanded="true"]) {
+		[data-testid="chat-drawer-root"]:is(:hover, :focus-within) {
 			opacity: 1;
 			transform: translateX(0);
+		}
+
+		#layers>div>div:first-child {
+			transform: unset !important;
+		}
+
+		#layers>div>div:nth-child(2) {
+			transform: translateY(-67px) !important;
 		}
 	}
 
 
-	if other-hateBorders {
+	if other-hateBorders or customBG!='' {
 		* {
 			border-color: transparent !important;
 		}
 	}
 
-	if other-hideBoxShadows {
+	if other-hideBoxShadows or customBG!='' {
+		[data-testid="GrokDrawer"]>div,
 		[data-testid="chat-drawer-main"],
 		[role="menu"],
 		div:has(>[id^="typeaheadDropdown"]),
@@ -487,7 +495,7 @@
 		[data-testid="primaryColumn"] [data-testid="cellInnerDiv"]:has(>div>div>button[data-testid="UserCell"]),
 		[data-testid="primaryColumn"] [data-testid="cellInnerDiv"]:has(>div>div>a[href*="connect_people"]),
 		{
-			display: none !important;
+			display: none;
 		}
 	}
 }
@@ -498,13 +506,13 @@
 		[data-testid="primaryColumn"] [data-testid="cellInnerDiv"]:has(h2):has(+ [data-testid="cellInnerDiv"]>div>div>[data-testid="trend"]),
 		[data-testid="primaryColumn"] [data-testid="cellInnerDiv"]:has(>div>div>[data-testid="trend"]),
 		[data-testid="primaryColumn"] [data-testid="cellInnerDiv"]:has(>div>div>[data-testid="trend"])+[data-testid="cellInnerDiv"]:has([href*="explore"]) {
-			display: none !important;
+			display: none;
 		}
 	}
 }
 
-@-moz-document regexp("^https:\/\/x.com\/(?!settings).*") {
-	/* Everywhere but Settings page */
+@-moz-document regexp("^https:\/\/x.com\/(?!(settings|i\/(premium|grok|chat))).*") {
+	/* Everywhere but Settings, Premium, Grok, Chat pages */
 	if wide {
 
 		html {
@@ -537,32 +545,32 @@
 		}
 
 		main[role="main"]>div {
-			width: 100dvw !important;
+			width: 100dvw;
 		}
 
 		[data-testid="primaryColumn"] {
-			position: absolute !important;
-			left: 275px !important;
-			width: auto !important;
-			margin: auto !important;
-			max-width: timeline-width !important;
-			right: calc(382px + 32px) !important;
-			transform: translateX(0) !important;
+			position: absolute;
+			max-width: (timeline-width px);
+			box-sizing: content-box;
+			margin-left: auto;
+			margin-right: auto;
+			left: 0;
+			right: 0;
 		}
 
 		[data-testid="primaryColumn"]>div>div:last-child,
 		[data-testid="primaryColumn"]>div>div:last-child>div>div {
-			min-width: unset !important;
-			max-width: unset !important;
-			width: 100% !important;
-			margin: 0 !important;
+			min-width: unset;
+			max-width: unset;
+			width: 100%;
+			margin: 0;
 		}
 
 		[data-testid="sidebarColumn"] {
 			position: fixed;
 			right: 0;
 			padding-left: 32px;
-			padding-right: 16.5px;
+			padding-right: 32px;
 			margin-right: 0;
 			width: 414px;
 			min-width: unset;
@@ -570,108 +578,68 @@
 		}
 
 		[data-testid="sidebarColumn"]>div {
-			align-items: flex-end !important;
-			width: 100% !important;
+			align-items: flex-end;
+			width: 100%;
 		}
 
 		[data-testid="sidebarColumn"]>div>div {
 			position: absolute;
 			min-height: 100dvh;
 			width: 350px;
-			margin-top: 0 !important;
-			top: 0 !important;
-			bottom: 0 !important;
-		}
-
-		if sidemenu-hover or sidebar-hover {
-			[data-testid="primaryColumn"] {
-				transition: all 300ms ease-in-out !important;
-			}
-		}
-
-		if sidemenu-hover {
-			[data-testid="primaryColumn"] {
-				left: 0 !important;
-			}
+			margin-top: 0;
+			top: 0;
+			bottom: 0;
 		}
 
 		if sidebar-hover {
 			[data-testid="primaryColumn"] {
-				z-index: 0 !important;
-				right: 32px !important;
+				z-index: 0;
 			}
 
 			[data-testid="sidebarColumn"]:hover {
-				width: 414px !important;
+				width: 414px;
 			}
 		}
 
 		@media screen and (max-width: 1264px) {
 
 			header[role="banner"]>div>div>div {
-				width: 68px !important;
-			}
-
-			if sidemenu-hover {
-				[data-testid="primaryColumn"] {
-					left: 0 !important;
-				}
-			}
-
-			else {
-				[data-testid="primaryColumn"] {
-					left: 68px !important;
-				}
+				width: 68px;
 			}
 
 			[data-testid="sidebarColumn"]>div>div>div>div>div>div>div:has([role="search"]) {
 				width: 350px;
 			}
 		}
-
-		@media screen and (max-width: 987px) {
-			[data-testid="primaryColumn"] {
-				right: 0 !important;
-			}
-		}
-
-		@media screen and (max-width: 499px) {
-			if sidemenu-hover {
-				[data-testid="primaryColumn"] {
-					left: 0 !important;
-				}
-			}
-		}
 	}
 
 	if sidemenu-hover {
 		header[role="banner"]>div>div {
-			opacity: 0 !important;
-			transition: all 300ms ease-in-out !important;
+			opacity: 0;
+			transition: all 300ms ease-in-out;
 		}
 
-		header[role="banner"]>div>div:hover,
-		header[role="banner"]>div>div:has(:focus) {
-			opacity: 1 !important;
+		header[role="banner"]>div>div:is(:hover, :focus-within),
+		{
+			opacity: 1;
 		}
 
 		if wide {
 			header[role="banner"]>div>div {
-				left: calc(-275px + 32px) !important;
+				left: calc(-275px + 32px);
 			}
 
-			header[role="banner"]>div>div:hover,
-			header[role="banner"]>div>div:has(:focus) {
-				left: 0px !important;
+			header[role="banner"]>div>div:is(:hover, :focus-within) {
+				left: 0px;
 			}
 
 			@media screen and (max-width: 1264px) {
 				header[role="banner"]>div>div {
-					left: calc(-88px + 32px) !important;
+					left: calc(-88px + 32px);
 				}
 
-				header[role="banner"]>div>div:hover {
-					left: 0 !important;
+				header[role="banner"]>div>div:is(:hover, :focus-within) {
+					left: 0;
 				}
 			}
 		}
@@ -680,48 +648,31 @@
 	if sidemenu-hover or customBG!='' {
 		header[role="banner"]>div>div {
 			backdrop-filter: blur(10px);
-			background-color: rgba(0, 0, 0, menuOpacity/2);
+			if sideMenusDarker {
+				background-color: rgba(0, 0, 0, menuOpacity/2);
+			}
 		}
 	}
 
 	if sidebar-hover {
 		[data-testid="sidebarColumn"] {
-			height: 100dvh !important;
-			opacity: 0 !important;
-			transition: all 300ms ease-in-out !important;
+			height: 100dvh;
+			opacity: 0;
+			transition: all 300ms ease-in-out;
 		}
 
 		[data-testid="sidebarColumn"]:hover,
 		[data-testid="sidebarColumn"]:has(:focus) {
-			opacity: 1 !important;
+			opacity: 1;
 		}
-
-		/* No rectangle background around the sidebar search field */
-		[data-testid="sidebarColumn"] div[tabindex="0"]>div>div:has(form) {
-			background-color: transparent !important;
-		}
-
 
 		if wide {
 			[data-testid="sidebarColumn"] {
-				transition: all 300ms ease-in-out !important;
+				transform: translateX(calc(100% - 32px));
 			}
 
-			[data-testid="sidebarColumn"] {
-				transform: translateX(calc(100% - 32px)) !important;
-			}
-
-			[data-testid="sidebarColumn"] {
-				position: fixed !important;
-			}
-
-			[data-testid="sidebarColumn"]:hover,
-			[data-testid="sidebarColumn"]:has(:focus) {
-				transform: translateX(0) !important;
-			}
-
-			[data-testid="sidebarColumn"]:hover>div>div>div>div>div>div:first-child {
-				transform: translateX(0) !important;
+			[data-testid="sidebarColumn"]:is(:hover, :focus-within) {
+				transform: translateX(0);
 			}
 		}
 	}
@@ -729,17 +680,12 @@
 	if sidebar-hover or customBG!='' {
 		[data-testid="sidebarColumn"] {
 			backdrop-filter: blur(10px);
-			background-color: rgba(0, 0, 0, menuOpacity/2);
+			if sideMenusDarker {
+				background-color: rgba(0, 0, 0, menuOpacity/2);
+			}
 		}
 	}
 }
-
-
-@-moz-document url-prefix("https://x.com/home") {
-
-	/* Home page*/
-}
-
 
 @-moz-document url-prefix("https://x.com/settings") {
 
