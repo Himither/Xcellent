@@ -4,22 +4,24 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.28.1
+@version				1.29.0
 @description				Adjustable timeline width, hide ads, hide stuff, show stuff only on hover & more
 @author					Himither
 @license				MIT
 @preprocessor				stylus
 
 @var checkbox				wide					"Make it wide"									1
-@var checkbox				hideGrok				"Hide grok stuff" 								0
+@var checkbox				hideGrok				"Hide grok stuff"								0
+@var checkbox				hidePremium				"Hide all premium annoyance"							0
 @var checkbox				hideVerified				"Hide not verified notifications"						0
 
 @var text Timeline		"━━━━━━⮞【Timeline】" '_'
 
 @var range				timeline-width				"Timeline max-width"								[900, 600, 1800, 1, "px"]
 @var checkbox				timeline-header				"Non-sticky timline header"							0
-@var checkbox				timeline-hideFollow			"Hide 'Who to follow / creators for you & similar posts'"			0
 @var checkbox				timeline-hideAds			"Hide Ads"									0
+@var checkbox				timeline-hideFollow			"Hide 'Who to follow / creators for you & similar posts'"			0
+@var checkbox				timeline-todaysNews			"Hide 'Today's News' posts'"							0
 @var checkbox				timeline-outerBorders			"Hide borders around timeline"							0
 @var checkbox				timeline-postBorders			"Hide borders between posts"							0
 @var checkbox				timeline-imgBorders			"Hide borders around images"							0
@@ -137,6 +139,14 @@
 			font-size: 69px;
 			transform: translate(-50%, -50%);
 			width: max-content;
+		}
+	}
+
+	if hidePremium {
+		nav a[data-testid="premium-hub-tab"],
+		[data-testid="sidebarColumn"]>div>div>div>div>div>div:has(a[href*="premium_tier_switch"]),
+		[data-testid="UserName"] a[href*="premium_sign_up"] {
+			display: none;
 		}
 	}
 
@@ -470,20 +480,30 @@
 	}
 }
 
-@-moz-document regexp("^(?!.*connect_people).x\.com.$") {
+@-moz-document regexp("^https:\/\/x.com\/(?!i\/connect).*") {
 	/* Everywhere but Connect page */
 	if timeline-hideFollow {
-		div[data-testid="cellInnerDiv"]:has(> div > div > div > h2),
-		div[data-testid="cellInnerDiv"]:has(> div > div > section),
-		div[data-testid="cellInnerDiv"]:has(> div > div > button),
-		div[data-testid="cellInnerDiv"]:has(> div > div > a) {
+		[data-testid="primaryColumn"] [data-testid="cellInnerDiv"]:has(h2):has(+div[data-testid="cellInnerDiv"]>div>div>[data-testid="UserCell"]),
+		[data-testid="primaryColumn"] [data-testid="cellInnerDiv"]:has(>div>div>button[data-testid="UserCell"]),
+		[data-testid="primaryColumn"] [data-testid="cellInnerDiv"]:has(>div>div>a[href*="connect_people"]),
+		{
+			display: none !important;
+		}
+	}
+}
+
+@-moz-document regexp("^https:\/\/x.com\/(?!explore).*") {
+	/* Everywhere but Explore page */
+	if timeline-todaysNews {
+		[data-testid="primaryColumn"] [data-testid="cellInnerDiv"]:has(h2):has(+ [data-testid="cellInnerDiv"]>div>div>[data-testid="trend"]),
+		[data-testid="primaryColumn"] [data-testid="cellInnerDiv"]:has(>div>div>[data-testid="trend"]),
+		[data-testid="primaryColumn"] [data-testid="cellInnerDiv"]:has(>div>div>[data-testid="trend"])+[data-testid="cellInnerDiv"]:has([href*="explore"]) {
 			display: none !important;
 		}
 	}
 }
 
 @-moz-document regexp("^https:\/\/x.com\/(?!settings).*") {
-
 	/* Everywhere but Settings page */
 	if wide {
 
