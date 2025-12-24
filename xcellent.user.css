@@ -4,7 +4,7 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.30.0
+@version				1.31.0
 @description				Adjustable timeline width | Hide stuff (Grok, Premium, Ads, Annoyances) | Show stuff only on hover/focus (Sidemenu, Sidebar, Messages)
 @author					Himither
 @license				MIT
@@ -82,7 +82,6 @@
 "Contain":				"contain",
 }
 @var range				menuOpacity				"Decrease background brightness"						[0.6, 0, 1, 0.01, '']
-@var checkbox				sideMenusDarker				"Darker, transparent background for sidemenu and sidebar"			0
 @var select				changeLogo				"Change the logo" {
 "Default*":				"default",
 "Twitter":				"'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWw6c3BhY2U9InByZXNlcnZlIiB2aWV3Qm94PSIwIDAgMjQ4IDIwNCI+DQogIDxwYXRoIGZpbGw9IiMxZDliZjAiIGQ9Ik0yMjEuOTUgNTEuMjljLjE1IDIuMTcuMTUgNC4zNC4xNSA2LjUzIDAgNjYuNzMtNTAuOCAxNDMuNjktMTQzLjY5IDE0My42OXYtLjA0Yy0yNy40NC4wNC01NC4zMS03LjgyLTc3LjQxLTIyLjY0IDMuOTkuNDggOCAuNzIgMTIuMDIuNzMgMjIuNzQuMDIgNDQuODMtNy42MSA2Mi43Mi0yMS42Ni0yMS42MS0uNDEtNDAuNTYtMTQuNS00Ny4xOC0zNS4wNyA3LjU3IDEuNDYgMTUuMzcgMS4xNiAyMi44LS44Ny0yMy41Ni00Ljc2LTQwLjUxLTI1LjQ2LTQwLjUxLTQ5LjV2LS42NGM3LjAyIDMuOTEgMTQuODggNi4wOCAyMi45MiA2LjMyQzExLjU4IDYzLjMxIDQuNzQgMzMuNzkgMTguMTQgMTAuNzFjMjUuNjQgMzEuNTUgNjMuNDcgNTAuNzMgMTA0LjA4IDUyLjc2LTQuMDctMTcuNTQgMS40OS0zNS45MiAxNC42MS00OC4yNSAyMC4zNC0xOS4xMiA1Mi4zMy0xOC4xNCA3MS40NSAyLjE5IDExLjMxLTIuMjMgMjIuMTUtNi4zOCAzMi4wNy0xMi4yNi0zLjc3IDExLjY5LTExLjY2IDIxLjYyLTIyLjIgMjcuOTMgMTAuMDEtMS4xOCAxOS43OS0zLjg2IDI5LTcuOTUtNi43OCAxMC4xNi0xNS4zMiAxOS4wMS0yNS4yIDI2LjE2eiIvPg0KPC9zdmc+'",
@@ -340,12 +339,10 @@
 			outline: solid rgba(0, 0, 0, menuOpacity) 99999vh;
 		}
 
-
 		[style$="234);"],
 		[style*="123);"] {
 			color: white !important; //Inline change, must be !important
 		}
-
 
 		[data-testid="primaryColumn"] div:not(div:has([role="menuitem"])):not(div[data-testid="scrubber"] div):not([role="listbox"]),
 		[data-testid="sidebarColumn"] div,
@@ -465,8 +462,10 @@
 			transform: unset !important;
 		}
 
-		#layers>div>div:nth-child(2) {
-			transform: translateY(-67px) !important;
+		@media (min-width: 500px) {
+			#layers>div>div:nth-child(2) {
+				transform: translateY(-67px) !important;
+			}
 		}
 	}
 
@@ -551,11 +550,97 @@
 		[data-testid="primaryColumn"] {
 			position: absolute;
 			max-width: (timeline-width px);
-			box-sizing: content-box;
+			box-sizing: border-box;
 			margin-left: auto;
 			margin-right: auto;
 			left: 0;
 			right: 0;
+		}
+
+		if !sidemenu-hover and !sidebar-hover {
+			breakpoint1=timeline-width+414+275+139;
+			breakpoint2=timeline-width+414+275;
+
+			@media (max-width: (breakpoint1 px)) {
+				[data-testid="primaryColumn"] {
+					right: 414px;
+					margin-right: 0;
+				}
+			}
+
+			@media (max-width: (breakpoint2 px)) {
+				[data-testid="primaryColumn"] {
+					left: 275px;
+					margin-left: 0;
+					max-width: calc(100dvw - 414px - 275px);
+				}
+			}
+
+			@media (max-width: 1264px) {
+				[data-testid="primaryColumn"] {
+					left: 68px;
+					max-width: calc(100dvw - 414px - 68px);
+				}
+			}
+
+			@media (max-width: 987px) {
+				[data-testid="primaryColumn"] {
+					right: 0;
+					max-width: calc(100dvw - 68px);
+				}
+			}
+
+			@media (max-width: 499px) {
+				[data-testid="primaryColumn"] {
+					left: 0;
+					max-width: calc(100dvw);
+				}
+			}
+		}
+
+		if !sidemenu-hover and sidebar-hover {
+			breakpoint=timeline-width+275+275;
+
+			@media (max-width: (breakpoint px)) {
+				[data-testid="primaryColumn"] {
+					left: 275px;
+					margin-left: 0;
+					width: calc(100dvw - 275px);
+				}
+			}
+
+			@media (max-width: 1264px) {
+				[data-testid="primaryColumn"] {
+					left: 68px;
+					width: calc(100dvw - 68px);
+				}
+			}
+
+			@media (max-width: 499px) {
+				[data-testid="primaryColumn"] {
+					left: 0;
+					width: calc(100dvw);
+				}
+			}
+		}
+
+		if sidemenu-hover and !sidebar-hover {
+			breakpoint=timeline-width+414+414;
+			@media (max-width: (breakpoint px)) {
+				[data-testid="primaryColumn"] {
+					margin-right: 0;
+					right: 414px;
+					width: calc(100% - 414px);
+				}
+			}
+
+			@media (max-width: 987px) {
+				[data-testid="primaryColumn"] {
+					margin-right: auto;
+					right: 0;
+					width: 100dvw;
+				}
+			}
 		}
 
 		[data-testid="primaryColumn"]>div>div:last-child,
@@ -602,7 +687,6 @@
 		}
 
 		@media screen and (max-width: 1264px) {
-
 			header[role="banner"]>div>div>div {
 				width: 68px;
 			}
@@ -619,8 +703,7 @@
 			transition: all 300ms ease-in-out;
 		}
 
-		header[role="banner"]>div>div:is(:hover, :focus-within),
-		{
+		header[role="banner"]>div>div:is(:hover, :focus-within) {
 			opacity: 1;
 		}
 
@@ -646,11 +729,10 @@
 	}
 
 	if sidemenu-hover or customBG!='' {
-		header[role="banner"]>div>div {
+		header[role="banner"]>div>div:hover,
+		header[role="banner"]>div>div:focus-within {
 			backdrop-filter: blur(10px);
-			if sideMenusDarker {
-				background-color: rgba(0, 0, 0, menuOpacity/2);
-			}
+			background-color: rgba(0, 0, 0, menuOpacity * 0.75);
 		}
 	}
 
@@ -678,11 +760,10 @@
 	}
 
 	if sidebar-hover or customBG!='' {
-		[data-testid="sidebarColumn"] {
+		[data-testid="sidebarColumn"]:hover,
+		[data-testid="sidebarColumn"]:focus-within {
 			backdrop-filter: blur(10px);
-			if sideMenusDarker {
-				background-color: rgba(0, 0, 0, menuOpacity/2);
-			}
+			background-color: rgba(0, 0, 0, menuOpacity * 0.75);
 		}
 	}
 }
