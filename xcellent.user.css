@@ -4,7 +4,7 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.31.0
+@version				1.31.1
 @description				Adjustable timeline width | Hide stuff (Grok, Premium, Ads, Annoyances) | Show stuff only on hover/focus (Sidemenu, Sidebar, Messages)
 @author					Himither
 @license				MIT
@@ -462,9 +462,11 @@
 			transform: unset !important;
 		}
 
-		@media (min-width: 500px) {
-			#layers>div>div:nth-child(2) {
-				transform: translateY(-67px) !important;
+		if !hideGrok {
+			@media (min-width: 500px) {
+				#layers>div>div:nth-child(2) {
+					transform: translateY(-67px) !important;
+				}
 			}
 		}
 	}
@@ -663,17 +665,12 @@
 		}
 
 		[data-testid="sidebarColumn"]>div {
-			align-items: flex-end;
-			width: 100%;
+			min-height: 100dvh !important; // Needed to avoid jittering
 		}
 
 		[data-testid="sidebarColumn"]>div>div {
-			position: absolute;
-			min-height: 100dvh;
-			width: 350px;
-			margin-top: 0;
-			top: 0;
-			bottom: 0;
+			top: 0 !important; // Needed to avoid jittering
+			bottom: 0 !important; // Needed to avoid jittering
 		}
 
 		if sidebar-hover {
