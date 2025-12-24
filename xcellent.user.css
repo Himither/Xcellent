@@ -4,7 +4,7 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.31.1
+@version				1.31.2
 @description				Adjustable timeline width | Hide stuff (Grok, Premium, Ads, Annoyances) | Show stuff only on hover/focus (Sidemenu, Sidebar, Messages)
 @author					Himither
 @license				MIT
@@ -358,18 +358,13 @@
 			background-color: rgba(0, 0, 0, menuOpacity);
 		}
 
-		[data-testid="primaryColumn"]>div>div>div,
-		[data-testid="primaryColumn"]>div>div>div>div>div>div>div {
-			backdrop-filter: none;
-		}
-
-		[data-testid="sidebarColumn"] {
-			z-index: 1;
-		}
-
 		[data-testid="sidebarColumn"] [id^="typeaheadDropdown"] {
 			backdrop-filter: blur(10px);
 			background-color: rgba(0, 0, 0, menuOpacity * 1.3);
+		}
+
+		[data-testid="sidebarColumn"] div:has(>div>div>[data-testid="SearchBox_Search_Input_label"]) {
+			backdrop-filter: contrast(80%);
 		}
 
 		:is([data-testid="tweet"],
@@ -392,18 +387,6 @@
 		[role="progressbar"]+div>div>div>div>div>div>div>div {
 			border-bottom-color: transparent;
 		}
-
-		[data-testid="ScrollSnap-List"] [role="link"],
-		[data-testid="sidebarColumn"] div:has( > [role]),
-		[data-testid="sidebarColumn"] div:has( > div > [role]),
-		[data-testid="sidebarColumn"] form[role="search"]>div>div,
-		[data-testid="card.wrapper"],
-		form[role=search]>div>div,
-		main>div>div>div>div>div>div>div>div>div:has(input),
-		a[style*="113);"] {
-			border-color: transparent;
-		}
-
 
 		[data-testid="ScrollSnap-prevButtonWrapper"]+[data-testid="ScrollSnap-SwipeableList"] {
 			border-bottom-left-radius: var(--br8);
@@ -512,7 +495,7 @@
 	}
 }
 
-@-moz-document regexp("^https:\/\/x.com\/(?!(settings|i\/(premium|grok|chat))).*") {
+@-moz-document regexp("^https:\/\/x.com\/(?!(settings|messages|i\/(premium|grok|chat))).*") {
 	/* Everywhere but Settings, Premium, Grok, Chat pages */
 	if wide {
 
@@ -533,16 +516,6 @@
 
 		header[role="banner"]>div>div {
 			left: 0;
-		}
-
-		header[role="banner"]>div>div>div {
-			padding-left: 5px;
-		}
-
-		@media (min-width: 600px) {
-			header[role="banner"]>div>div>div {
-				padding-left: 14.5px;
-			}
 		}
 
 		main[role="main"]>div {
@@ -574,28 +547,28 @@
 				[data-testid="primaryColumn"] {
 					left: 275px;
 					margin-left: 0;
-					max-width: calc(100dvw - 414px - 275px);
+					width: calc(100dvw - 414px - 275px);
 				}
 			}
 
 			@media (max-width: 1264px) {
 				[data-testid="primaryColumn"] {
 					left: 68px;
-					max-width: calc(100dvw - 414px - 68px);
+					width: calc(100dvw - 414px - 68px);
 				}
 			}
 
 			@media (max-width: 987px) {
 				[data-testid="primaryColumn"] {
 					right: 0;
-					max-width: calc(100dvw - 68px);
+					width: calc(100dvw - 68px);
 				}
 			}
 
 			@media (max-width: 499px) {
 				[data-testid="primaryColumn"] {
 					left: 0;
-					max-width: calc(100dvw);
+					width: calc(100dvw);
 				}
 			}
 		}
@@ -761,6 +734,31 @@
 		[data-testid="sidebarColumn"]:focus-within {
 			backdrop-filter: blur(10px);
 			background-color: rgba(0, 0, 0, menuOpacity * 0.75);
+		}
+	}
+}
+
+@-moz-document url-prefix("https://x.com/i/chat") {
+	/* Chat page */
+	if customBG!='' {
+		[data-testid="dm-inbox-tabs-container"]>div[class*="to-transparent"] {
+			opacity: 0 !important;
+		}
+
+		[class*="text-gray-700"],
+		[data-testid="dm-inbox-tab-requests"] {
+			color: white !important; // Must be !important for the button
+		}
+	}
+}
+
+@-moz-document url-prefix("https://x.com/messages/requests") {
+	/* Messages page */
+	if customBG!='' {
+		section[role="region"]>div,
+		section[role="region"]>div>div>div:first-child>div>div>div,
+		section[role="region"]>div>div>div:nth-child(2) {
+			background-color: transparent;
 		}
 	}
 }
