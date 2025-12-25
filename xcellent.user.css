@@ -4,7 +4,7 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.32.3
+@version				1.32.4
 @description				Adjustable timeline width | Hide stuff (Grok, Premium, Ads, Annoyances) | Show stuff only on hover/focus (Sidemenu, Sidebar, Messages)
 @author					Himither
 @license				MIT
@@ -50,8 +50,8 @@
 @var checkbox				sidebar-hover				"Show sidebar only on hover/focus"						1
 @var checkbox				sidebar-hideSearch			"Hide sidebar searchbar"							0
 @var checkbox				sidebar-hidePremium			"Hide sidebar 'Upgrade to Premium+'" 						0
-@var checkbox				sidebar-hideFollow			"Hide sidebar 'Who to follow'"							0
 @var checkbox				sidebar-hideTrends			"Hide sidebar 'What's happening'"						0
+@var checkbox				sidebar-hideFollow			"Hide sidebar 'Who to follow'"							0
 @var checkbox				sidebar-hideLegalNotice			"Hide sidebar legal notice"							0
 
 @var text Other			"━━━━━━⮞【Other】" '_'
@@ -343,16 +343,16 @@
 		}
 
 		body {
+			/*Inline change, must be !important */
 			background-color: rgba(0, 0, 0, menuOpacity) !important;
 			outline: solid rgba(0, 0, 0, menuOpacity) 99999vh;
-			/*Inline change, must be !important */
 		}
 
 		[style$="234);"],
 		[style*="123);"],
 		[style*="165);"] {
+			/* Easy to read white text. Inline change, must be !important */
 			color: white !important;
-			/* Inline change, must be !important */
 		}
 
 		[data-testid="primaryColumn"] div:not(div:has([role="menuitem"])):not(div[data-testid="scrubber"] div):not([role="listbox"]),
@@ -374,11 +374,19 @@
 			backdrop-filter: unset;
 		}
 
-		[data-testid="primaryColumn"]:has([data-testid="cellInnerDiv"])>div>div:first-child {
-			backdrop-filter: blur(10px);
+		if (!timeline-header) {
+			[data-testid="primaryColumn"]:has([data-testid="cellInnerDiv"])>div>div:first-child {
+				backdrop-filter: blur(10px);
+			}
+		}
+
+		[data-testid="sidebarColumn"]>div>div>div>[tabindex="0"]>div>div:has(>*):not(:has([data-testid="SearchBox_Search_Input"])):not(:last-child) {
+			/* All cards / sections in the sidebar, expect for dividers and the legal notice*/
+			background-color: var(--bg);
 		}
 
 		[data-testid="sidebarColumn"] [id^="typeaheadDropdown"] {
+			/* More opaque background for the sidebar search input dropdown menu */
 			background-color: "rgba(%s, 0.8)" % var(--bgForRGBA);
 		}
 
@@ -484,7 +492,7 @@
 
 
 	if other-hateBorders or customBG!='' {
-		*:not(:is([name="background-picker"], [data-testid="activeRoute"] > div), [role="radio"]>div) {
+		*:not(:is([name="background-picker"], [data-testid="activeRoute"] > div), [role="radio"]>div, [style*="border-radius"]) {
 			border-color: transparent !important;
 		}
 	}
@@ -667,14 +675,25 @@
 			max-width: unset;
 		}
 
+
+
 		[data-testid="sidebarColumn"]>div {
-			min-height: 100dvh !important; // Needed to avoid jittering
+			/* Needed to avoid jittering. Inline change, needs to be !important */
+			min-height: 100dvh !important;
 		}
 
 		[data-testid="sidebarColumn"]>div>div {
-			margin-top: 0 !important; // Needed to keep content visible after scrolling down a lot
-			top: 0 !important; // Needed to avoid jittering
-			bottom: 0 !important; // Needed to avoid jittering
+			/* Needed to keep content visible after scrolling down a lot. Inline change, needs to be !important */
+			margin-top: 0 !important;
+			/* Needed to avoid jittering. Inline change, needs to be !important */
+			top: 0 !important;
+			/* Needed to avoid jittering. Inline change, needs to be !important */
+			bottom: 0 !important;
+		}
+
+		[data-testid="sidebarColumn"]>div>div>div>div,
+		[data-testid="sidebarColumn"]>div>div>div>div>div {
+			height: 100dvh;
 		}
 
 		if sidebar-hover {
@@ -778,7 +797,19 @@
 
 		[class*="text-gray-700"],
 		[data-testid="dm-inbox-tab-requests"] {
-			color: white !important; // Must be !important for the button
+			/*  Inline change, Must be !important */
+			color: white !important;
+		}
+	}
+}
+
+@-moz-document url-prefix("https://x.com/i/grok") {
+	/* Grok page */
+	if customBG!='' {
+		button:has(>div>span>svg):not(:hover),
+		button:has(button)>div {
+			/* Inline change, Must be !important */
+			background-color: var(--bg) !important;
 		}
 	}
 }
