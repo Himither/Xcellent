@@ -4,7 +4,7 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.31.2
+@version				1.32.3
 @description				Adjustable timeline width | Hide stuff (Grok, Premium, Ads, Annoyances) | Show stuff only on hover/focus (Sidemenu, Sidebar, Messages)
 @author					Himither
 @license				MIT
@@ -26,7 +26,7 @@
 @var checkbox				timeline-postBorders			"Hide borders between posts"							0
 @var checkbox				timeline-imgBorders			"Hide borders around images"							0
 @var checkbox				timeline-quoteBorders			"Hide borders around quotes"							0
-@var checkbox				timeline-quoteImg			"Round corners for quote images"						0
+@var checkbox				timeline-quoteImg			"Round corners for quote images"						1
 
 @var text Sidemenu		"━━━━━━⮞【Sidemenu】" '_'
 
@@ -53,6 +53,13 @@
 @var checkbox				sidebar-hideFollow			"Hide sidebar 'Who to follow'"							0
 @var checkbox				sidebar-hideTrends			"Hide sidebar 'What's happening'"						0
 @var checkbox				sidebar-hideLegalNotice			"Hide sidebar legal notice"							0
+
+@var text Other			"━━━━━━⮞【Other】" '_'
+
+@var checkbox				other-hoverMessages			"Show Messages only on hover/focus"						1
+@var checkbox				other-hateBorders			"Make all borders transparent"							0
+@var checkbox				other-hideBoxShadows			"Hide shadow/shine around boxes"						1
+@var checkbox				other-hideDiscoverNewLists 		"Hide 'Discover new Lists' on lists page"                                       0
 
 @var text Customize		"━━━━━━⮞【Customize】" '_'
 
@@ -90,26 +97,26 @@
 @var text				customLogo				"Custom logo (Link to an image on X/Data URL wrapped in single quotes)" 	"''"
 @var range				resizeLogo				"Logo size" [75, 50, 150, 1, "%"]
 
-@var text Other			"━━━━━━⮞【Other】" '_'
-
-@var checkbox				other-hoverMessages			"Show Messages only on hover/focus"						1
-@var checkbox				other-hateBorders			"Make all borders transparent"							0
-@var checkbox				other-hideBoxShadows			"Hide shadow/shine around boxes"						1
-
 ==/UserStyle== */
 @-moz-document url-prefix("https://x.com") {
 
 	/* Formerly known as Twitter ¯\_(ツ)_/¯ */
 	:root:has(body[style*="rgb(0"]) {
-		--bg: rgba(0, 0, 0, menuOpacity);
+		--bg: rgba(0, 0, 0, menuOpacity / 2);
+		--bgOpaque: rgb(0, 0, 0);
+		--bgForRGBA: 0, 0, 0;
 	}
 
 	:root:has(body[style*="rgb(21"]) {
-		--bg: rgba(21, 32, 43, menuOpacity);
+		--bg: rgba(21, 32, 43, menuOpacity / 2);
+		--bgOpaque: rgb(21, 32, 43);
+		--bgForRGBA: 21, 32, 43;
 	}
 
 	:root:has(body[style*="rgb(255"]) {
-		--bg: rgba(255, 255, 255, menuOpacity);
+		--bg: rgba(255, 255, 255, menuOpacity / 2);
+		--bgOpaque: rgb(255, 255, 255);
+		--bgForRGBA: 255, 255, 255;
 	}
 
 	:root {
@@ -126,7 +133,8 @@
 		button:has(path[d*="21h4.241L6.446"]),
 		[data-testid="tweet"] div:has(> nav),
 		main:has(path[d^="M76.717"]),
-		aside li:has([data-testid="UserAvatar-Container-grok"]) {
+		aside li:has([data-testid="UserAvatar-Container-grok"]),
+		a[href*="/i/imagine"] {
 			display: none;
 		}
 
@@ -335,13 +343,16 @@
 		}
 
 		body {
-			background-color: rgba(0, 0, 0, menuOpacity) !important; //Inline change, must be !important
+			background-color: rgba(0, 0, 0, menuOpacity) !important;
 			outline: solid rgba(0, 0, 0, menuOpacity) 99999vh;
+			/*Inline change, must be !important */
 		}
 
 		[style$="234);"],
-		[style*="123);"] {
-			color: white !important; //Inline change, must be !important
+		[style*="123);"],
+		[style*="165);"] {
+			color: white !important;
+			/* Inline change, must be !important */
 		}
 
 		[data-testid="primaryColumn"] div:not(div:has([role="menuitem"])):not(div[data-testid="scrubber"] div):not([role="listbox"]),
@@ -350,40 +361,44 @@
 		[data-testid="mask"]+[role="dialog"]>div>div>div,
 		button[style*="background-color"][style*="backdrop-filter"],
 		div:has(> div > div > [data-testid="toolBar"]),
-		[data-testid="toolBar"] {
+		[data-testid="toolBar"],
+		a[href*="/i/communities/"]:not(:hover) {
 			background-color: transparent;
 		}
 
 		[data-testid="Dropdown"] {
-			background-color: rgba(0, 0, 0, menuOpacity);
+			background-color: "rgba(%s, 0.8)" % var(--bgForRGBA);
 		}
 
 		[data-testid="primaryColumn"]>div>div:first-child>div:first-child {
 			backdrop-filter: unset;
 		}
 
-		[data-testid="primaryColumn"]>div>div:first-child {
+		[data-testid="primaryColumn"]:has([data-testid="cellInnerDiv"])>div>div:first-child {
 			backdrop-filter: blur(10px);
 		}
 
 		[data-testid="sidebarColumn"] [id^="typeaheadDropdown"] {
-			backdrop-filter: blur(10px);
-			background-color: rgba(0, 0, 0, menuOpacity * 1.3);
+			background-color: "rgba(%s, 0.8)" % var(--bgForRGBA);
 		}
 
-		[data-testid="sidebarColumn"] div:has(>div>div>[data-testid="SearchBox_Search_Input_label"]) {
-			backdrop-filter: brightness(80%);
+		form[role="search"]:not([action="#"])>div>div,
+		[data-testid="dm-search-bar"],
+		div:has(>[data-icon="icon-search-stroke"]),
+		div:has(>div>div>div>div>svg>g>[d^="M10.25 3.75c-3.59 0-6.5 2.91-6.5"]),
+		div:has(>div>div>div>div>div>div>div>textarea) {
+			background-color: var(--bg) !important;
 		}
 
 		:is([data-testid="tweet"],
 		[data-testid="notification"]):focus {
-			background-color: rgba(0, 0, 0, 0.3);
+			background-color: var(--bg);
 		}
 
 		#react-root div[role="dialog"]>div,
 		[role="menu"],
 		[data-testid="confirmationSheetDialog"] {
-			background-color: rgba(0, 0, 0, 0.7);
+			background-color: var(--bg);
 		}
 
 		article[data-testid="tweet"] div[role="group"] {
@@ -410,6 +425,11 @@
 		[data-testid="tweetPhoto"]>div>div {
 			border-top-right-radius: var(--br16);
 			border-top-left-radius: var(--br16);
+		}
+
+		[data-testid="GrokDrawer"]>div,
+		[role="dialog"] {
+			background-color: var(--bgOpaque);
 		}
 	}
 
@@ -464,7 +484,7 @@
 
 
 	if other-hateBorders or customBG!='' {
-		* {
+		*:not(:is([name="background-picker"], [data-testid="activeRoute"] > div), [role="radio"]>div) {
 			border-color: transparent !important;
 		}
 	}
@@ -475,7 +495,8 @@
 		[role="menu"],
 		div:has(>[id^="typeaheadDropdown"]),
 		[id^="typeaheadDropdown"],
-		[data-testid="primaryColumn"]>div>div:first-child button {
+		[data-testid="primaryColumn"]>div>div:first-child button,
+		[data-testid="HoverCard"] {
 			box-shadow: unset;
 		}
 	}
@@ -651,6 +672,7 @@
 		}
 
 		[data-testid="sidebarColumn"]>div>div {
+			margin-top: 0 !important; // Needed to keep content visible after scrolling down a lot
 			top: 0 !important; // Needed to avoid jittering
 			bottom: 0 !important; // Needed to avoid jittering
 		}
@@ -711,7 +733,7 @@
 		header[role="banner"]>div>div:hover,
 		header[role="banner"]>div>div:focus-within {
 			backdrop-filter: blur(10px);
-			background-color: rgba(0, 0, 0, menuOpacity * 0.75);
+			background-color: var(--bg);
 		}
 	}
 
@@ -742,7 +764,7 @@
 		[data-testid="sidebarColumn"]:hover,
 		[data-testid="sidebarColumn"]:focus-within {
 			backdrop-filter: blur(10px);
-			background-color: rgba(0, 0, 0, menuOpacity * 0.75);
+			background-color: var(--bg);
 		}
 	}
 }
@@ -757,6 +779,17 @@
 		[class*="text-gray-700"],
 		[data-testid="dm-inbox-tab-requests"] {
 			color: white !important; // Must be !important for the button
+		}
+	}
+}
+
+@-moz-document regexp("^https:\/\/x.com\/.*\/lists(?!\/suggested).*") {
+	/* Lists page */
+	if other-hideDiscoverNewLists {
+		[data-testid="cellInnerDiv"]:has(+ [data-testid="cellInnerDiv"] [d="M11 11V4h2v7h7v2h-7v7h-2v-7H4v-2h7z"]),
+		[data-testid="cellInnerDiv"]:has([d="M11 11V4h2v7h7v2h-7v7h-2v-7H4v-2h7z"]),
+		[data-testid="cellInnerDiv"]:has([href="/i/lists/suggested"]) {
+			display: none;
 		}
 	}
 }
@@ -776,18 +809,19 @@
 
 	/* Settings page*/
 	if customBG!='' {
-		main>div {
-			backdrop-filter: blur(10px);
-			background-color: rgba(0, 0, 0, menuOpacity/2) !important;
+		svg {
+			color: white !important;
 		}
 
-		section {
-			border: none !important;
+		div {
+			opacity: 1 !important;
 		}
 
-		section>div,
-		section>div>div>div>div,
-		form>div>div>div {
+		:is([role="banner"]>div>div, section) {
+			background-color: var(--bg);
+		}
+
+		section div:not(:has(~ input)) {
 			background-color: transparent !important;
 		}
 
@@ -804,7 +838,7 @@
 		[data-testid="activeRoute"] a:focus,
 		main a:hover,
 		main a:focus {
-			background-color: rgba(0, 0, 0, menuOpacity/2) !important;
+			background-color: var(--bg) !important;
 		}
 	}
 }
