@@ -4,7 +4,7 @@
 @namespace				github.com/Himither
 @homepageURL				https://github.com/Himither/Xcellent
 @supportURL				https://github.com/Himither/Xcellent/issues
-@version				1.32.5
+@version				1.33.0
 @description				Wide mode || Hide Grok/Premium/Ads || Show sidemenu/sidebar/messages only on hover/focus || Custom background
 @author					Himither
 @license				MIT
@@ -35,12 +35,10 @@
 @var checkbox				sidemenu-hideExplore			"Hide 'Explore' button" 							0
 @var checkbox				sidemenu-hideNotifications		"Hide 'Notifications' button" 							0
 @var checkbox				sidemenu-hideChat			"Hide 'Chat' button" 								0
+@var checkbox				sidemenu-hideGrok			"Hide 'Grok' button"								0
 @var checkbox				sidemenu-hidePremium			"Hide 'Premium' button"								0
-@var checkbox				sidemenu-hideLists			"Hide 'Lists' button" 								0
 @var checkbox				sidemenu-hideBookmarks			"Hide 'Bookmarks' button" 							0
-@var checkbox				sidemenu-hideJobs			"Hide 'Jobs' button"								0
-@var checkbox				sidemenu-hideCommunities		"Hide 'Communities' button" 							0
-@var checkbox				sidemenu-hideVerifiedOrgs		"Hide 'Verified Orgs' button"							0
+@var checkbox				sidemenu-hideCreatorStudio		"Hide 'Creator Studio' button" 							0
 @var checkbox				sidemenu-hideProfile			"Hide 'Profile' button" 							0
 @var checkbox				sidemenu-hideMore			"Hide 'More' button" 								0
 @var checkbox				sidemenu-hidePost			"Hide 'Post' button"								0
@@ -60,6 +58,7 @@
 @var checkbox				other-hateBorders			"Make all borders transparent"							0
 @var checkbox				other-hideBoxShadows			"Hide shadow/shine around boxes"						1
 @var checkbox				other-hideDiscoverNewLists 		"Hide 'Discover new Lists' on lists page"                                       0
+@var checkbox				other-hideScrollbars			"Hide scrollbars"								0
 
 @var text Customize		"━━━━━━⮞【Customize】" '_'
 
@@ -171,7 +170,6 @@
 
 
 	if timeline-hideAds {
-		main section>div>div>div:has(article > div > div > div > div > div > div > div > div > div > span),
 		[data-testid="cellInnerDiv"]:has(> div > div > [data-testid="placementTracking"]),
 		[data-testid="cellInnerDiv"]:has([data-testid="inlinePrompt"]),
 		[data-testid="verified_profile_visitor_upsell"] {
@@ -246,14 +244,14 @@
 		}
 	}
 
-	if sidemenu-hidePremium or hidePremium {
-		nav a[data-testid="premium-hub-tab"] {
+	if sidemenu-hideGrok or hideGrok {
+		nav a[href$="grok"] {
 			display: none;
 		}
 	}
 
-	if sidemenu-hideLists {
-		nav a[href$="lists"] {
+	if sidemenu-hidePremium or hidePremium {
+		nav a[data-testid="premium-hub-tab"] {
 			display: none;
 		}
 	}
@@ -264,20 +262,8 @@
 		}
 	}
 
-	if sidemenu-hideJobs {
-		nav a[data-testid="jobs-tab-item"] {
-			display: none;
-		}
-	}
-
-	if sidemenu-hideCommunities {
-		nav a[href$="communities"] {
-			display: none;
-		}
-	}
-
-	if sidemenu-hideVerifiedOrgs {
-		nav a[data-testid="vo-signup-tab"] {
+	if sidemenu-hideCreatorStudio {
+		nav a[href$="creators/studio"] {
 			display: none;
 		}
 	}
@@ -506,6 +492,12 @@
 		[data-testid="primaryColumn"]>div>div:first-child button,
 		[data-testid="HoverCard"] {
 			box-shadow: unset;
+		}
+	}
+
+	if other-hideScrollbars {
+		* {
+			scrollbar-width: none;
 		}
 	}
 }
